@@ -21,6 +21,8 @@ Xinyue Wang: add extra recover-cure NPC
 
 Zhehao Liang:  switch camera 
 
+Yuling Hu: Skybox broundry
+
 
 
 

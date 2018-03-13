@@ -30,7 +30,7 @@ The user moves a cube around the board trying to knock balls into a cone
 		    camera:camera}
 
 	var gameState =
-			{score:0, health:10, scene:'start', camera:'none' }
+			{score:0, health:10, scene:'start', camera:'none', music:"none"}
 
 
 	// Here is the main game control
@@ -247,7 +247,7 @@ The user moves a cube around the board trying to knock balls into a cone
 
 		// load a sound and set it as the Audio object's buffer
 		var audioLoader = new THREE.AudioLoader();
-		audioLoader.load( '/sounds/'+file, function( buffer ) {
+		audioLoader.load( 'sounds/'+file, function( buffer ) {
 			sound.setBuffer( buffer );
 			sound.setLoop( false );
 			sound.setVolume( 0.5 );
@@ -470,6 +470,12 @@ The user moves a cube around the board trying to knock balls into a cone
 			case "ArrowDown": avatarCam.translateZ(1);break;
 			case "q": avatarCam.rotateY(0.25);break;
 			case "e": avatarCam.rotateY(-0.25);break;
+
+			// add music key
+			case "6": gameState.music = "loop"; break;
+			case "7": gameState.music = "good"; break;
+
+
 		}
 
 	}
@@ -487,6 +493,11 @@ The user moves a cube around the board trying to knock balls into a cone
 			case "m": controls.speed = 10; break;
       case " ": controls.fly = false; break;
       case "h": controls.reset = false; break;
+
+			// add music key
+			case "6": gameState.music = "none"; break;
+			case "7": gameState.music = "none"; break;
+
 		}
 	}
 
@@ -574,8 +585,24 @@ The user moves a cube around the board trying to knock balls into a cone
 
 			default:
 			  console.log("don't know the scene "+gameState.scene);
+		}
+
+
+    // play backgroud music
+		switch(gameState.music){
+			case "none":
+			  break;
+			case "loop":
+				soundEffect("loop.mp3");
+				break;
+			case "good":
+		    soundEffect("good.wav");
+				break;
 
 		}
+
+
+
 
 		//draw heads up display ..
 		var info = document.getElementById("info");

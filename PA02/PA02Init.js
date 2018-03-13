@@ -144,12 +144,13 @@ The user moves a cube around the board trying to knock balls into a cone
 				if (other_object==avatar){
 					gameState.health--;
 					NPCreset();
-					if(gameState.health<=0) {
-						gameState.scene='lose';
-						//return;
-					}
+
 					//gameState.scene = 'youwon';
 
+				}
+				if(gameState.health<=0) {
+					gameState.scene='lose';
+					//return;
 				}
 			})
 			scene.add(npc);
@@ -157,6 +158,7 @@ The user moves a cube around the board trying to knock balls into a cone
 			npc2 = createBoxMesh2(0x00ff00,1,2,4);
 			npc2.position.set(10,5,-30);
 			npc2.addEventListener('collision',function(other_object){
+
 				if (other_object==avatar){
 					gameState.health++;
 					NPC2reset();
@@ -434,7 +436,7 @@ The user moves a cube around the board trying to knock balls into a cone
 			addBalls();
 			return;
 		}
-		if(event.key='p'){
+		if(event.key=='p'){
 			gameState.scene = 'main';
 			gameState.score = 0;
 			gameState.health = 10;
@@ -443,6 +445,7 @@ The user moves a cube around the board trying to knock balls into a cone
 		// this is the regular scene
 		switch (event.key){
 			// change the way the avatar is moving
+			
 			case "w": controls.fwd = true;  break;
 			case "s": controls.bwd = true; break;
 			case "a": controls.left = true; break;

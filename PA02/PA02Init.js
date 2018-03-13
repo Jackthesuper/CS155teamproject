@@ -10,7 +10,7 @@ The user moves a cube around the board trying to knock balls into a cone
 	// First we declare the variables that hold the objects we need
 	// in the animation code
 	var scene, renderer;  // all threejs programs need these
-	var camera, avatarCam, edgeCam;  // we have two cameras in the main scene
+	var camera, camera1, avatarCam, edgeCam, edgeCam1;  // we have two cameras in the main scene
 	var avatar;
 	var npc;
 	var npc2;
@@ -81,6 +81,9 @@ The user moves a cube around the board trying to knock balls into a cone
 			camera.position.set(0,50,0);
 			camera.lookAt(0,0,0);
 
+			camera1 = new THREE.PerspectiveCamera( 90, window.innerWidth / window.innerHeight, 0.1, 1000 );
+			camera1.position.set(0,50,-50);
+			camera1.lookAt(0,0,0);
 
 
 			// create the ground and the skybox
@@ -101,6 +104,8 @@ The user moves a cube around the board trying to knock balls into a cone
       edgeCam = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 0.1, 1000 );
       edgeCam.position.set(20,20,10);
 
+			edgeCam1 = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 0.1, 1000 );
+      edgeCam1.position.set(10,60,10);
 
 			addBalls();
 
@@ -421,6 +426,8 @@ The user moves a cube around the board trying to knock balls into a cone
 			case "1": gameState.camera = camera; break;
 			case "2": gameState.camera = avatarCam; break;
       case "3": gameState.camera = edgeCam; break;
+			case "4": gameState.camera = camera1; break;
+			case "5": gameState.camera = edgeCam1; break;
 
 			// move the camera around, relative to the avatar
 			case "ArrowLeft": avatarCam.translateY(1);break;
@@ -517,6 +524,7 @@ The user moves a cube around the board trying to knock balls into a cone
 				updateNPC();
 				updateNPC2();
         edgeCam.lookAt(avatar.position);
+				edgeCam1.lookAt(avatar.position);
 	    	scene.simulate();
 				if (gameState.camera!= 'none'){
 					renderer.render( scene, gameState.camera );

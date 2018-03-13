@@ -426,8 +426,16 @@ The user moves a cube around the board trying to knock balls into a cone
 
 	function updateNPC(){
 		npc.lookAt(avatar.position);
+<<<<<<< HEAD
 	  //npc.__dirtyPosition = true;
 		npc.setLinearVelocity(npc.getWorldDirection().multiplyScalar(-5));
+=======
+	  npc.__dirtyPosition = true;
+		if(avatar.position.distanceTo(npc.position)<20){
+			npc.setLinearVelocity(npc.getWorldDirection().multiplyScalar(5));
+		}
+
+>>>>>>> bea8054a0f3fadbe2da36d5885c4a7575dbee0f7
 	}
 
 
@@ -493,6 +501,7 @@ The user moves a cube around the board trying to knock balls into a cone
 
 		//draw heads up display ..
 		var info = document.getElementById("info");
+		// console.dir(document.getElementById("info"))
 		info.innerHTML='<div style="font-size:24pt">Score: '
     + gameState.score
     + " health="+gameState.health

@@ -30,7 +30,7 @@ The user moves a cube around the board trying to knock balls into a cone
 		    camera:camera}
 
 	var gameState =
-	     {score:0, health:10, scene:'main', camera:'none' }
+			{score:0, health:10, scene:'start', camera:'none' }
 
 
 	// Here is the main game control
@@ -55,6 +55,29 @@ The user moves a cube around the board trying to knock balls into a cone
 		endCamera.lookAt(0,0,0);
 
 	}
+	function createStartScene(){
+		startScene = initScene();
+		startText = createSkyBox('start.png',5);
+		startScene.add(startText);
+		var light = createPointLight();
+		light.position.set(0,200,20);
+		startScene.add(light);
+		//gameState.scene='start';
+		startCamera = new THREE.PerspectiveCamera( 90, window.innerWidth / window.innerHeight, 0.1, 1000 );
+		startCamera.position.set(0,50,1);
+		startCamera.lookAt(0,0,0);
+	}
+	function createLoseScene(){
+		loseScene = initScene();
+		loseText = createSkyBox('lose.png',5);
+		loseScene.add(loseText);
+		var light = createPointLight();
+		light.position.set(0,200,20);
+		loseScene.add(light);
+		loseCamera = new THREE.PerspectiveCamera( 90, window.innerWidth / window.innerHeight, 0.1, 1000 );
+		loseCamera.position.set(0,50,1);
+		loseCamera.lookAt(0,0,0);
+	}
 
 	/**
 	  To initialize the scene, we initialize each of its components
@@ -65,6 +88,8 @@ The user moves a cube around the board trying to knock balls into a cone
 			createEndScene();
 			initRenderer();
 			createMainScene();
+			createLoseScene();
+			createStartScene();
 	}
 
 
@@ -119,6 +144,10 @@ The user moves a cube around the board trying to knock balls into a cone
 				if (other_object==avatar){
 					gameState.health--;
 					NPCreset();
+					if(gameState.health<=0) {
+						gameState.scene='lose';
+						//return;
+					}
 					//gameState.scene = 'youwon';
 
 				}
@@ -399,11 +428,16 @@ The user moves a cube around the board trying to knock balls into a cone
 		console.log("Keydown: '"+event.key+"'");
 		//console.dir(event);
 		// first we handle the "play again" key in the "youwon" scene
-		if (gameState.scene == 'youwon' && event.key=='r') {
-			gameState.scene = 'main';
+		if ((gameState.scene == 'youwon'||gameState.scene == 'lose')&& event.key=='r') {
+			gameState.scene = 'start';
 			gameState.score = 0;
 			addBalls();
 			return;
+		}
+		if(event.key='p'){
+			gameState.scene = 'main';
+			gameState.score = 0;
+			gameState.health = 10;
 		}
 
 		// this is the regular scene
@@ -513,7 +547,14 @@ The user moves a cube around the board trying to knock balls into a cone
 		requestAnimationFrame( animate );
 
 		switch(gameState.scene) {
-
+			case "lose":
+				loseText.rotateY(0.005);
+				renderer.render( loseScene, loseCamera );
+				break;
+			case "start":
+				startText.rotateY(0.005);
+				renderer.render( startScene, startCamera );
+				break;
 			case "youwon":
 				endText.rotateY(0.005);
 				renderer.render( endScene, endCamera );

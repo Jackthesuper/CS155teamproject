@@ -12,6 +12,8 @@ The user moves a cube around the board trying to knock balls into a cone
 	var scene, renderer;  // all threejs programs need these
 	var camera, avatarCam, edgeCam;  // we have two cameras in the main scene
 	var avatar;
+	var npc;
+	var npc2;
 	// here are some mesh objects ...
 
 	var cone;
@@ -34,6 +36,7 @@ The user moves a cube around the board trying to knock balls into a cone
 	// Here is the main game control
   init(); //
 	initControls();
+
 	animate();  // start the animation loop!
 
 
@@ -104,16 +107,30 @@ The user moves a cube around the board trying to knock balls into a cone
 			cone = createConeMesh(4,6);
 			cone.position.set(10,3,7);
 			scene.add(cone);
-			npc = createBoxMesh2(0x0000ff,1,2,4);
+
+			npc = createBoxMesh2(0xff0000,1,2,4);
 			npc.position.set(30,5,-30);
 			npc.addEventListener('collision',function(other_object){
 				if (other_object==avatar){
 					gameState.health--;
+					NPCreset();
 					//gameState.scene = 'youwon';
 
 				}
 			})
 			scene.add(npc);
+
+			npc2 = createBoxMesh2(0x00ff00,1,2,4);
+			npc2.position.set(10,5,-30);
+			npc2.addEventListener('collision',function(other_object){
+				if (other_object==avatar){
+					gameState.health++;
+					NPC2reset();
+					//gameState.scene = 'youwon';
+
+				}
+			})
+			scene.add(npc2);
 
 			var wall = createWall(0xffaa00,50,3,1);
 			wall.position.set(10,0,10);
@@ -121,7 +138,15 @@ The user moves a cube around the board trying to knock balls into a cone
 
 	}
 
+	function NPCreset(){
+		npc.__dirtyPosition = true;
+		npc.position.set(30,5,-30);
+	}
 
+	function NPC2reset(){
+		npc2.__dirtyPosition = true;
+		npc2.position.set(30,5,-30);
+	}
 	function randN(n){
 		return Math.random()*n;
 	}
@@ -428,7 +453,16 @@ The user moves a cube around the board trying to knock balls into a cone
 		npc.lookAt(avatar.position);
 	  npc.__dirtyPosition = true;
 		if(avatar.position.distanceTo(npc.position)<20){
+			console.log("we are here");
 			npc.setLinearVelocity(npc.getWorldDirection().multiplyScalar(5));
+		}
+	}
+
+	function updateNPC2(){
+		npc2.lookAt(avatar.position);
+		npc2.__dirtyPosition = true;
+		if(avatar.position.distanceTo(npc2.position)<20){
+			npc2.setLinearVelocity(npc2.getWorldDirection().multiplyScalar(-3));
 		}
 	}
 
@@ -481,6 +515,7 @@ The user moves a cube around the board trying to knock balls into a cone
 			case "main":
 				updateAvatar();
 				updateNPC();
+				updateNPC2();
         edgeCam.lookAt(avatar.position);
 	    	scene.simulate();
 				if (gameState.camera!= 'none'){

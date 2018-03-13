@@ -17,9 +17,9 @@ Zijie Shen: make ball rollings
 
 Xinhang Dong: landscape
 
-Xinyue Wang: add extra recover-cure NPC
+Xinyue Wang: add an extra health-plus NPC in addition to the hurt-health NPC
 
-Zhehao Liang:  switch camera 
+Zhehao Liang:  switch to a longview camera 
 
 Yuling Hu: Skybox broundry
 

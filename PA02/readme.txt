@@ -13,7 +13,7 @@ Feature addition:
 
 Wei Wei: reset
 
-Zijie Shen: make ball rollings
+Zijie Shen: make balls rolling
 
 Xinhang Dong: landscape
 

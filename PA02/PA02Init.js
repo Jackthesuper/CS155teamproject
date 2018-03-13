@@ -108,7 +108,9 @@ The user moves a cube around the board trying to knock balls into a cone
 			npc.position.set(30,5,-30);
 			npc.addEventListener('collision',function(other_object){
 				if (other_object==avatar){
-					gameState.scene = 'youwon';
+					gameState.health--;
+					//gameState.scene = 'youwon';
+
 				}
 			})
 			scene.add(npc);
@@ -425,7 +427,7 @@ The user moves a cube around the board trying to knock balls into a cone
 	function updateNPC(){
 		npc.lookAt(avatar.position);
 	  //npc.__dirtyPosition = true;
-		npc.setLinearVelocity(npc.getWorldDirection().multiplyScalar(-0.5));
+		npc.setLinearVelocity(npc.getWorldDirection().multiplyScalar(-5));
 	}
 
 

@@ -2,11 +2,11 @@ Mission Distribution:
 
 Requirement Distributed:
 
-#1 & #2 Zijie Shen Zhehao Liang
+#1 & #2 Zijie_Shen  Zhehao_Liang
 
-#3 $ #4 Xinyue Wang Wei Wei
+#3 $ #4 Xinyue_Wang  Wei_Wei
 
-#5 & #6 Yuling Hu Xinhang Dong
+#5 & #6 Yuling_Hu  Xinhang_Dong
 
 
 Feature addition:

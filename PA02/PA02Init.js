@@ -366,7 +366,7 @@ The user moves a cube around the board trying to knock balls into a cone
 		var material = new THREE.MeshLambertMaterial( { color: 0xffffff,  map: texture ,side:THREE.DoubleSide} );
 		//var pmaterial = new Physijs.createMaterial(material,0.9,0.5);
 		//var mesh = new THREE.Mesh( geometry, material );
-		var mesh = new THREE.Mesh( geometry, material, 0 );
+		var mesh = new Physijs.Mesh( geometry, material, 0 );
 
 		mesh.receiveShadow = false;
 
@@ -505,6 +505,7 @@ The user moves a cube around the board trying to knock balls into a cone
 			case "m": controls.speed = 10; break;
       case " ": controls.fly = false; break;
       case "h": controls.reset = false; break;
+			case "k": avatar.__dirtyPosition = true;  avatar.position.set(0,50,0);
 
 			// add music key
 			case "6": gameState.music = "none"; break;

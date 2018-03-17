@@ -223,7 +223,7 @@ The user moves a cube around the board trying to knock balls into a cone
 						// make the ball drop below the scene ..
 						// threejs doesn't let us remove it from the schene...
 						this.position.y = this.position.y - 100;
-						// this.__dirtyPosition = true;
+						this.__dirtyPosition = true;
 					}
 				}
 			)
@@ -523,8 +523,7 @@ The user moves a cube around the board trying to knock balls into a cone
 			var dif = new THREE.Vector3();
 			var new_v = new THREE.Vector3();
 			dif.subVectors(cone.position, redballs[i].position)
-			new_v.addVectors(v, dif.multiplyScalar(length).multiplyScalar(0.002))
-			redballs[i].__dirtyPosition = true;
+			new_v.addVectors(v, dif.multiplyScalar(cone.position.distanceTo(redballs[i].position)).multiplyScalar(0.002))
 			redballs[i].setLinearVelocity(new_v);
 		}
 	}

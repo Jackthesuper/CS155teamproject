@@ -136,7 +136,7 @@ The user moves a cube around the board trying to knock balls into a cone
 			addBalls();
 
 			cone = createConeMesh(4,6);
-			cone.position.set(10,3,7);
+			cone.position.set(10,3,6);
 			scene.add(cone);
 
 			npc = createBoxMesh2(0xff0000,1,2,4);
@@ -516,14 +516,17 @@ The user moves a cube around the board trying to knock balls into a cone
 	function updateRedBalls(){
 		for(i = 0; i<redballs.length; i+=1){
 			var v = redballs[i].getLinearVelocity()
-			var length = v.length()
-			if(redballs[i].position.y < -50||length < 0.01||redballs[i].position.y > 5){
+			var length = v.length();
+			// ||length < 0.01||redballs[i].position.y > 5
+			if(redballs[i].position.y < -50||redballs[i].position.y > 5){
 				break;
 			}
 			var dif = new THREE.Vector3();
 			var new_v = new THREE.Vector3();
-			dif.subVectors(cone.position, redballs[i].position)
-			new_v.addVectors(v, dif.multiplyScalar(cone.position.distanceTo(redballs[i].position)).multiplyScalar(0.002))
+			var cone_position = new THREE.Vector3(cone.position.x, cone.position.y-3, cone.position.z);
+			dif.subVectors(cone_position, redballs[i].position)
+			new_v.addVectors(v, dif.multiplyScalar(1/cone.position.distanceTo(redballs[i].position)).multiplyScalar(0.03).multiplyScalar(v.length()))
+			redballs[i].__dirtyPosition = true;
 			redballs[i].setLinearVelocity(new_v);
 		}
 	}

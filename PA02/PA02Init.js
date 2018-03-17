@@ -120,11 +120,9 @@ The user moves a cube around the board trying to knock balls into a cone
 
 			// create the avatar
 			avatarCam = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 0.1, 1000 );
-			avatar = createAvatar();
-			avatar.translateY(20);
-			avatarCam.translateY(-4);
-			avatarCam.translateZ(3);
-			scene.add(avatar);
+			//avatar = createAvatar();
+			createAvatar();
+
 			gameState.camera = avatarCam;
 
       edgeCam = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 0.1, 1000 );
@@ -378,7 +376,7 @@ The user moves a cube around the board trying to knock balls into a cone
 	}
 
 	function createAvatar(){
-		//var geometry = new THREE.SphereGeometry( 4, 20, 20);
+	/*	//var geometry = new THREE.SphereGeometry( 4, 20, 20);
 		var geometry = new THREE.BoxGeometry( 5, 5, 6);
 		var material = new THREE.MeshLambertMaterial( { color: 0xffff00} );
 		var pmaterial = new Physijs.createMaterial(material,0.9,0.8);
@@ -390,7 +388,44 @@ The user moves a cube around the board trying to knock balls into a cone
 		avatarCam.lookAt(0,4,10);
 		mesh.add(avatarCam);
 
-		return mesh;
+		return mesh;*/
+		//var suzanne;
+		var loader = new THREE.JSONLoader();
+		loader.load("models/suzanne.json",
+					function ( geometry, materials ) {
+						console.log("loading suzanne");
+						var material = //materials[ 0 ];
+						new THREE.MeshLambertMaterial( { color: 0x00ff00 } );
+						var pmaterial=new Physijs.createMaterial(material,0.9,0.8);
+						avatar = new Physijs.BoxMesh( geometry, pmaterial );
+						console.log("created suzanne mesh");
+						console.log(JSON.stringify(avatar.scale));// = new THREE.Vector3(4.0,1.0,1.0);
+						avatar.setDamping(0.1,0.1);
+						//scene.add(suzanne);
+						var s = 2;
+						console.dir(avatar)
+						avatar.scale.y=s;
+						avatar.scale.x=s;
+						avatar.scale.z=s;
+						avatar.position.z = -5;
+						avatar.position.y = 3;
+						avatar.position.x = -5;
+						avatar.castShadow = true;
+						avatar.translateY(20);
+						avatarCam.translateY(-4);
+						avatarCam.translateZ(3);
+						avatarCam.position.set(0,4,0);
+						avatarCam.lookAt(0,4,10);
+						avatar.add(avatarCam);
+						scene.add(avatar);
+					},
+					function(xhr){
+						console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );},
+					function(err){console.log("error in loading: "+err);}
+
+				)
+				console.dir(avatar)
+				return avatar;
 	}
 
 

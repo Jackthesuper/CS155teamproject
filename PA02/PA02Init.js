@@ -27,7 +27,7 @@ The user moves a cube around the board trying to knock balls into a cone
 
 	var controls =
 	     {fwd:false, bwd:false, left:false, right:false,
-				speed:10, fly:false, reset:false,
+				speed:10, fly:false, reset:false, rotateFwd:false, rotateBwd:false,
 		    camera:camera}
 
 	var gameState =
@@ -501,7 +501,8 @@ The user moves a cube around the board trying to knock balls into a cone
           console.log("space!!");
           break;
       case "h": controls.reset = true; break;
-
+			case "u": controls.rotateFwd = true; break;
+			case "j": controls.rotateBwd = true; break;
 
 			// switch cameras
 			case "1": gameState.camera = camera; break;
@@ -540,6 +541,8 @@ The user moves a cube around the board trying to knock balls into a cone
 			case "m": controls.speed = 10; break;
       case " ": controls.fly = false; break;
       case "h": controls.reset = false; break;
+			case "u": controls.rotateFwd = false; break;
+			case "j": controls.rotateBwd = false; break;
 			case "k": avatar.__dirtyPosition = true;  avatar.position.set(0,50,0);
 
 			// add music key
@@ -607,6 +610,11 @@ The user moves a cube around the board trying to knock balls into a cone
 			avatar.setAngularVelocity(new THREE.Vector3(0,controls.speed*0.1,0));
 		} else if ((controls.left&&controls.bwd)||(controls.right&&!controls.bwd)){
 			avatar.setAngularVelocity(new THREE.Vector3(0,-controls.speed*0.1,0));
+		}
+		else if(controls.rotateFwd){
+			avatar.setAngularVelocity(new THREE.Vector3(controls.speed*0.1,0,0));
+		}else if(controls.rotateBwd){
+			avatar.setAngularVelocity(new THREE.Vector3(-controls.speed*0.1,0,0));
 		}
 		else{
 			avatar.setAngularVelocity(new THREE.Vector3(0,0,0))

@@ -13,16 +13,12 @@ Feature addition:
 
 Wei Wei: reset
 
-Zijie Shen: make balls rolling
+Zijie Shen: make avatar rolling
 
 Xinhang Dong: landscape
 
 Xinyue Wang: add an extra health-plus NPC in addition to the hurt-health NPC
 
-Zhehao Liang:  switch to a longview camera 
+Zhehao Liang:  switch to a longview camera
 
 Yuling Hu: Skybox broundry
-
-
-
-

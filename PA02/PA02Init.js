@@ -436,7 +436,7 @@ The user moves a cube around the board trying to knock balls into a cone
 						avatar.translateY(20);
 						avatarCam.translateY(-4);
 						avatarCam.translateZ(3);
-						avatarCam.position.set(0,4,0);
+						avatarCam.position.set(0,2,0);
 						avatarCam.lookAt(0,4,10);
 						avatar.add(avatarCam);
 						scene.add(avatar);

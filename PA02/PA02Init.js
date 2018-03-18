@@ -191,8 +191,6 @@ The user moves a cube around the board trying to knock balls into a cone
 
 	function addBalls(){
 		var numBalls = 20;
-
-
 		for(i=0;i<numBalls;i++){
 			var ball;
 			if(i%4 != 0){
@@ -227,7 +225,26 @@ The user moves a cube around the board trying to knock balls into a cone
 			)
 		}
 	}
+	function addBalls1(){
+		var numBalls = 20;
+		for(i=0;i<numBalls;i++){
+			var ball;
+			ball = createGreenBall();
+			ball.position.set(randN(20)+15,30,randN(20)+15);
+			scene.add(ball);
+			ball.addEventListener( 'collision',
+				function( other_object, relative_velocity, relative_rotation, contact_normal ) {
+					if (other_object==avatar){
+						gameState.health -= 1;
+						if (gameState.health==0) {
+							gameState.scene='lose';
+						}
 
+					}
+				}
+			)
+		}
+	}
 
 
 	function playGameMusic(){
@@ -454,6 +471,15 @@ The user moves a cube around the board trying to knock balls into a cone
 	}
 
 
+	function createGreenBall(color=0x00ff00, restitution=0.4){
+		//var geometry = new THREE.SphereGeometry( 4, 20, 20);
+		var geometry = new THREE.SphereGeometry( 1, 16, 16);
+		var material = new THREE.MeshLambertMaterial( { color: color} );
+		var pmaterial = new Physijs.createMaterial(material,0.9,restitution);
+		var mesh = new Physijs.BoxMesh( geometry, pmaterial );
+		mesh.castShadow = true;
+		return mesh;
+	}
 
 
 
@@ -488,6 +514,7 @@ The user moves a cube around the board trying to knock balls into a cone
 
 		// this is the regular scene
 		switch (event.key){
+			case "b": addBalls1(); break;
 			// change the way the avatar is moving
 
 			case "w": controls.fwd = true;  break;

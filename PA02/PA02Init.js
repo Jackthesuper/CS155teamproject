@@ -137,6 +137,11 @@ The user moves a cube around the board trying to knock balls into a cone
 			cone.position.set(10,3,6);
 			scene.add(cone);
 
+			floatBox = createBoxMesh2(0x000000,10,2,10);
+			floatBox.position.set(0,30,0);
+			floatBox.mass=0;
+			scene.add(floatBox);
+
 			npc = createBoxMesh2(0xff0000,1,2,4);
 			npc.position.set(30,5,-30);
 			npc.addEventListener('collision',function(other_object){

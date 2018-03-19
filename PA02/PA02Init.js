@@ -489,7 +489,10 @@ The user moves a cube around the board trying to knock balls into a cone
 
 
 	var clock;
-
+	function reset(){
+		avatar.__dirtyPosition = true;
+		avatar.position.set(0,50,0);
+	}
 	function initControls(){
 		// here is where we create the eventListeners to respond to operations
 
@@ -506,6 +509,8 @@ The user moves a cube around the board trying to knock balls into a cone
 		//console.dir(event);
 		// first we handle the "play again" key in the "youwon" scene
 		if ((gameState.scene == 'youwon'||gameState.scene == 'lose')&& event.key=='r') {
+			console.log("init");
+			reset();
 			gameState.scene = 'start';
 			gameState.score = 0;
 			addBalls();
@@ -575,7 +580,7 @@ The user moves a cube around the board trying to knock balls into a cone
       case "h": controls.reset = false; break;
 			case "u": controls.rotateFwd = false; break;
 			case "j": controls.rotateBwd = false; break;
-			case "k": avatar.__dirtyPosition = true;  avatar.position.set(0,50,0);
+			case "k": reset();
 
 			// add music key
 			case "6": gameState.music = "none"; break;

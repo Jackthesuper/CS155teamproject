@@ -18,7 +18,6 @@ The user moves a cube around the board trying to knock balls into a cone
 	// here are some mesh objects ...
 
 	var cone;
-
 	var endScene, endCamera, endText;
 
 

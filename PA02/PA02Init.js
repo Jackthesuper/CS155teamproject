@@ -185,7 +185,7 @@ The user moves a cube around the board trying to knock balls into a cone
 
 	function NPC2reset(){
 		npc2.__dirtyPosition = true;
-		npc2.position.set(30,5,-30);
+		npc2.position.set(10,5,-30);
 	}
 	function randN(n){
 		return Math.random()*n;

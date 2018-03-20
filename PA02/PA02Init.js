@@ -439,6 +439,7 @@ The user moves a cube around the board trying to knock balls into a cone
 						avatarCam.lookAt(0,4,10);
 						avatar.add(avatarCam);
 						scene.add(avatar);
+						avatar.mass = 1000;
 					},
 					function(xhr){
 						console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );},

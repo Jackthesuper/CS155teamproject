@@ -85,11 +85,11 @@ The user moves a cube around the board trying to knock balls into a cone
 	function init(){
       initPhysijs();
 			scene = initScene();
-			createEndScene();
+			//createEndScene();
 			initRenderer();
 			createMainScene();
-			createLoseScene();
-			createStartScene();
+			//createLoseScene();
+			//createStartScene();
 	}
 
 
@@ -130,11 +130,11 @@ The user moves a cube around the board trying to knock balls into a cone
 			edgeCam1 = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 0.1, 1000 );
       edgeCam1.position.set(10,60,10);
 
-			addBalls();
+			//addBalls();
 
 			cone = createConeMesh(4,6);
 			cone.position.set(10,3,6);
-			scene.add(cone);
+			//scene.add(cone);
 
 			floatBox = createBoxMesh2(0x000000,10,2,10);
 			floatBox.position.set(0,30,0);
@@ -173,7 +173,7 @@ The user moves a cube around the board trying to knock balls into a cone
 
 			var wall = createWall(0xffaa00,50,3,1);
 			wall.position.set(10,0,10);
-			scene.add(wall);
+			//scene.add(wall);
 
 	}
 

@@ -30,7 +30,7 @@ The user moves a cube around the board trying to knock balls into a cone
 		    camera:camera}
 
 	var gameState =
-			{score:0, health:10, scene:'start', camera:'none', music:"none"}
+			{score:0, health:10, scene:'main', camera:'none', music:"none"}
 
 
 	// Here is the main game control
@@ -139,7 +139,7 @@ The user moves a cube around the board trying to knock balls into a cone
 			floatBox = createBoxMesh2(0x000000,10,2,10);
 			floatBox.position.set(0,30,0);
 			floatBox.mass=0;
-			scene.add(floatBox);
+			//scene.add(floatBox);
 
 			npc = createBoxMesh2(0xff0000,1,2,4);
 			npc.position.set(30,5,-30);

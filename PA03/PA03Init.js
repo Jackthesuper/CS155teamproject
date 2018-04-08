@@ -136,10 +136,10 @@ The user moves a cube around the board trying to knock balls into a cone
 			cone.position.set(10,3,6);
 			//scene.add(cone);
 
-			floatBox = createBoxMesh2(0x000000,10,2,10);
+			floatBox = createBoxMesh2(0x000000,20,2,10);
 			floatBox.position.set(0,30,0);
 			floatBox.mass=0;
-			//scene.add(floatBox);
+			scene.add(floatBox);
 
 			npc = createBoxMesh2(0xff0000,1,2,4);
 			npc.position.set(30,5,-30);
@@ -356,7 +356,7 @@ The user moves a cube around the board trying to knock balls into a cone
 
 	function createGround(image){
 		// creating a textured plane which receives shadows
-		var geometry = new THREE.PlaneGeometry( 180, 180, 128 );
+		var geometry = new THREE.PlaneGeometry( 200, 200, 128 );
 		var texture = new THREE.TextureLoader().load( '../images/'+image );
 		texture.wrapS = THREE.RepeatWrapping;
 		texture.wrapT = THREE.RepeatWrapping;
@@ -377,7 +377,7 @@ The user moves a cube around the board trying to knock balls into a cone
 
 	function createSkyBox(image,k){
 		// creating a textured plane which receives shadows
-		var geometry = new THREE.SphereGeometry( 80, 80, 80 );
+		var geometry = new THREE.SphereGeometry( 100, 100, 100 );
 		var texture = new THREE.TextureLoader().load( '../images/'+image );
 		texture.wrapS = THREE.RepeatWrapping;
 		texture.wrapT = THREE.RepeatWrapping;

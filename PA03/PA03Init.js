@@ -140,6 +140,19 @@ The user moves a cube around the board trying to knock balls into a cone
 			floatBox.position.set(0,30,0);
 			floatBox.mass=0;
 			scene.add(floatBox);
+
+			floatBox2_1 = createBoxMesh2(0x000000,20,2,10);
+			floatBox2_1.position.set(-20,30,0);
+			floatBox2_1.mass=0;
+			scene.add(floatBox2_1);
+
+			floatBox2_2 = createBoxMesh2(0x000000,20,2,10);
+			floatBox2_2.position.set(-38,25,0);
+			floatBox2_2.mass=0;
+			floatBox2_2.rotateZ(Math.PI/6);
+			scene.add(floatBox2_2);
+
+
 			plane_height = 2.0
 			const plane1_1_length = 50.0
 			const plane1_1_width = 20.0

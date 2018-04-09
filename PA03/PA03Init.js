@@ -136,20 +136,20 @@ The user moves a cube around the board trying to knock balls into a cone
 			cone.position.set(10,3,6);
 			//scene.add(cone);
 
-			floatBox = createBoxMesh2(0x000000,20,2,10);
+			floatBox = createBoxMesh2(0x000000,20,1,20);
 			floatBox.position.set(0,30,0);
 			floatBox.mass=0;
 			scene.add(floatBox);
 
-			floatBox2_1 = createBoxMesh2(0x000000,20,2,10);
+			floatBox2_1 = createBoxMesh2(0x000000,20,1,20);
 			floatBox2_1.position.set(-20,30,0);
 			floatBox2_1.mass=0;
 			scene.add(floatBox2_1);
 
-			floatBox2_2 = createBoxMesh2(0x000000,20,2,10);
-			floatBox2_2.position.set(-38,25,0);
+			floatBox2_2 = createBoxMesh2(0x000000,20,1,20);
+			floatBox2_2.position.set(-38,35,0);
 			floatBox2_2.mass=0;
-			floatBox2_2.rotateZ(Math.PI/6);
+			floatBox2_2.rotateZ(-Math.PI/6);
 			scene.add(floatBox2_2);
 
 
@@ -479,7 +479,7 @@ The user moves a cube around the board trying to knock balls into a cone
 						avatarCam.lookAt(0,2,10);
 						avatar.add(avatarCam);
 						scene.add(avatar);
-						avatar.mass = 1000;
+						avatar.mass = 10000;
 					},
 					function(xhr){
 						console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );},

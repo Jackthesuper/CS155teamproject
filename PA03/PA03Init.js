@@ -31,10 +31,7 @@ The user moves a cube around the board trying to knock balls into a cone
 
 	var gameState =
 			{score:0, health:10, scene:'main', camera:'none', music:"none"}
-	const grid_width = 5;
-	const ground_width = 550;
-	const wall_height = 20;
-	var nextwall;
+
 
 	// Here is the main game control
   init(); //
@@ -115,9 +112,9 @@ The user moves a cube around the board trying to knock balls into a cone
 
 
 			// create the ground and the skybox
-			var ground = createGround('planeTexture.jpg');
+			var ground = createGround('grass.png');
 			scene.add(ground);
-			var skybox = createSkyBox('planeTexture.jpg',1);
+			var skybox = createSkyBox('sky.jpg',1);
 			scene.add(skybox);
 
 			// create the avatar
@@ -133,65 +130,45 @@ The user moves a cube around the board trying to knock balls into a cone
 			edgeCam1 = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 0.1, 1000 );
       edgeCam1.position.set(10,60,10);
 
-			wall_color = 0xd7dbe2;
-			wall1_1 = createFloatBoxMesh(wall_color, 100, 0, 0, -50, alongZ = true)
-			wall1_2 = createFloatBoxMesh(wall_color, 15, 10, 0, 0)
-			wall1_1.add(wall1_2)
-			console.log(wall1_2)
-			scene.add(wall1_1)
-			// maze_group1.add(wall1_1)
-			// scene.add(maze_group1)
+			//addBalls();
 
-			// cone = createConeMesh(4,6);
-			// cone.position.set(10,3,6);
-			// //scene.add(cone);
-			//
-			// floatBox = createBoxMesh2(0x000000,20,1,20);
-			// floatBox.position.set(0,30,0);
-			// floatBox.mass=0;
-			// scene.add(floatBox);
-			//
-			// floatBox2_1 = createBoxMesh2(0x000000,20,1,20);
-			// floatBox2_1.position.set(-20,30,0);
-			// floatBox2_1.mass=0;
-			// scene.add(floatBox2_1);
-			//
-			// floatBox2_2 = createBoxMesh2(0x000000,20,1,20);
-			// floatBox2_2.position.set(-38,35,0);
-			// floatBox2_2.mass=0;
-			// floatBox2_2.rotateZ(-Math.PI/6);
-			// scene.add(floatBox2_2);
-			//
-			//
-			// plane_height = 2.0
-			// const plane1_1_length = 50.0
-			// const plane1_1_width = 20.0
-			// plane1_1 = createBoxMesh2(0x000000,plane1_1_length, plane_height, plane1_1_width);
-			// plane1_1.position.set(200-plane1_1_length/2, plane_height/2, 0);
-			// plane1_1.mass = 0;
-			// scene.add(plane1_1);
-			// const plane1_2_length = 50.0
-			// const plane1_2_width = 20.0
-			// const plane1_2_rotationAngle = Math.PI/6
-			// plane1_2 = createBoxMesh2(0x000000, plane1_2_length, plane_height, plane1_2_width)
-			// plane1_2.mass = 0;
-			// plane1_2.position.set(
-			// 	plane1_1.position.x-plane1_1_length/2-(plane1_2_length/2+plane_height/2*Math.tan(plane1_2_rotationAngle/2))*Math.cos(plane1_2_rotationAngle)-plane_height/2*Math.tan(plane1_2_rotationAngle/2),
-			// 	Math.sin(plane1_2_rotationAngle)*(plane1_2_length/2+plane_height/2*Math.tan(plane1_2_rotationAngle/2))+plane_height/2,
-			// 	plane1_1.position.z
-			// )
-			// plane1_2.rotateZ(-plane1_2_rotationAngle)
-			// scene.add(plane1_2)
-			// const plane1_3_length = 50.0
-			// const plane1_3_width = 20.0
-			// plane1_3 = createBoxMesh2(0x000000, plane1_3_length, plane_height, plane1_2_width)
-			// plane1_3.mass = 0;
-			// plane1_3.position.set(
-			// 	plane1_1.position.x-plane1_1_length/2-plane1_2_length*Math.cos(plane1_2_rotationAngle)-plane1_3_length/2,
-			// 	Math.sin(plane1_2_rotationAngle)*plane1_2_length+plane_height/2,
-			// 	plane1_2.position.z
-			// )
-			// scene.add(plane1_3)
+			cone = createConeMesh(4,6);
+			cone.position.set(10,3,6);
+			//scene.add(cone);
+
+			floatBox = createBoxMesh2(0x000000,20,2,10);
+			floatBox.position.set(0,30,0);
+			floatBox.mass=0;
+			scene.add(floatBox);
+			plane_height = 2.0
+			const plane1_1_length = 50.0
+			const plane1_1_width = 20.0
+			plane1_1 = createBoxMesh2(0x000000,plane1_1_length, plane_height, plane1_1_width);
+			plane1_1.position.set(200-plane1_1_length/2, plane_height/2, 0);
+			plane1_1.mass = 0;
+			scene.add(plane1_1);
+			const plane1_2_length = 50.0
+			const plane1_2_width = 20.0
+			const plane1_2_rotationAngle = Math.PI/6
+			plane1_2 = createBoxMesh2(0x000000, plane1_2_length, plane_height, plane1_2_width)
+			plane1_2.mass = 0;
+			plane1_2.position.set(
+				plane1_1.position.x-plane1_1_length/2-(plane1_2_length/2+plane_height/2*Math.tan(plane1_2_rotationAngle/2))*Math.cos(plane1_2_rotationAngle)-plane_height/2*Math.tan(plane1_2_rotationAngle/2),
+				Math.sin(plane1_2_rotationAngle)*(plane1_2_length/2+plane_height/2*Math.tan(plane1_2_rotationAngle/2))+plane_height/2,
+				plane1_1.position.z
+			)
+			plane1_2.rotateZ(-plane1_2_rotationAngle)
+			scene.add(plane1_2)
+			const plane1_3_length = 50.0
+			const plane1_3_width = 20.0
+			plane1_3 = createBoxMesh2(0x000000, plane1_3_length, plane_height, plane1_2_width)
+			plane1_3.mass = 0;
+			plane1_3.position.set(
+				plane1_1.position.x-plane1_1_length/2-plane1_2_length*Math.cos(plane1_2_rotationAngle)-plane1_3_length/2,
+				Math.sin(plane1_2_rotationAngle)*plane1_2_length+plane_height/2,
+				plane1_2.position.z
+			)
+			scene.add(plane1_3)
 
 			// npc = createBoxMesh2(0xff0000,1,2,4);
 			// npc.position.set(30,5,-30);
@@ -368,8 +345,8 @@ The user moves a cube around the board trying to knock balls into a cone
 		light = new THREE.PointLight( 0xffffff);
 		light.castShadow = true;
 		//Set up shadow properties for the light
-		light.shadow.mapSize.width = 1024;  // default
-		light.shadow.mapSize.height = 1024; // default
+		light.shadow.mapSize.width = 2048;  // default
+		light.shadow.mapSize.height = 2048; // default
 		light.shadow.camera.near = 0.5;       // default
 		light.shadow.camera.far = 500      // default
 		return light;
@@ -385,27 +362,20 @@ The user moves a cube around the board trying to knock balls into a cone
 		return mesh;
 	}
 
-	//alongZ: whether it's along the Z axis
-	function createFloatBoxMesh(color,length, x, y, z, alongZ = false){
-			var geometry;
-			if(alongZ){
-				geometry = new THREE.BoxGeometry(grid_width, wall_height, length)
-			}
-			else{
-				geometry = new THREE.BoxGeometry(length, wall_height, grid_width)
-			}
-		var material = new THREE.MeshLambertMaterial({color: color})
-		var pmaterial = new Physijs.createMaterial(material,0.9,0.5)
-		mesh = new Physijs.BoxMesh(geometry, pmaterial, 0)
-		mesh.position.set(x, y, z)
+	function createBoxMesh2(color,w,h,d){
+		var geometry = new THREE.BoxGeometry( w, h, d);
+		var material = new THREE.MeshLambertMaterial( { color: color} );
+		mesh = new Physijs.BoxMesh( geometry, material );
+		//mesh = new Physijs.BoxMesh( geometry, material,0 );
 		mesh.castShadow = true;
-		return mesh
+		return mesh;
 	}
 
   function createWall(color,w,h,d){
     var geometry = new THREE.BoxGeometry( w, h, d);
     var material = new THREE.MeshLambertMaterial( { color: color} );
     mesh = new Physijs.BoxMesh( geometry, material, 0 );
+    //mesh = new Physijs.BoxMesh( geometry, material,0 );
     mesh.castShadow = true;
     return mesh;
   }
@@ -413,11 +383,11 @@ The user moves a cube around the board trying to knock balls into a cone
 
 	function createGround(image){
 		// creating a textured plane which receives shadows
-		var geometry = new THREE.PlaneGeometry( ground_width, ground_width, 128 );
+		var geometry = new THREE.PlaneGeometry( 400, 400, 128 );
 		var texture = new THREE.TextureLoader().load( '../images/'+image );
 		texture.wrapS = THREE.RepeatWrapping;
 		texture.wrapT = THREE.RepeatWrapping;
-		texture.repeat.set( 1, 1 );
+		texture.repeat.set( 15, 15 );
 		var material = new THREE.MeshLambertMaterial( { color: 0xffffff,  map: texture ,side:THREE.DoubleSide} );
 		var pmaterial = new Physijs.createMaterial(material,0.9,0.05);
 		//var mesh = new THREE.Mesh( geometry, material );
@@ -426,7 +396,6 @@ The user moves a cube around the board trying to knock balls into a cone
 		mesh.receiveShadow = true;
 
 		mesh.rotateX(Math.PI/2);
-		mesh.position.z -= ground_width/2-5
 		return mesh
 		// we need to rotate the mesh 90 degrees to make it horizontal not vertical
 	}
@@ -435,16 +404,16 @@ The user moves a cube around the board trying to knock balls into a cone
 
 	function createSkyBox(image,k){
 		// creating a textured plane which receives shadows
-		var geometry = new THREE.BoxGeometry( ground_width, ground_width*2, ground_width );
+		var geometry = new THREE.SphereGeometry( 200, 200, 200 );
 		var texture = new THREE.TextureLoader().load( '../images/'+image );
 		texture.wrapS = THREE.RepeatWrapping;
 		texture.wrapT = THREE.RepeatWrapping;
-		texture.repeat.set( 1, 2 );
+		texture.repeat.set( k, k );
 		var material = new THREE.MeshLambertMaterial( { color: 0xffffff,  map: texture ,side:THREE.DoubleSide} );
 		//var pmaterial = new Physijs.createMaterial(material,0.9,0.5);
 		//var mesh = new THREE.Mesh( geometry, material );
 		var mesh = new Physijs.Mesh( geometry, material, 0 );
-		mesh.position.z -= ground_width/2-5
+
 		mesh.receiveShadow = false;
 
 
@@ -470,19 +439,22 @@ The user moves a cube around the board trying to knock balls into a cone
 		return mesh;*/
 		//var suzanne;
 		var loader = new THREE.JSONLoader();
-		var loader1 = new THREE.OBJLoader();
 		loader.load("models/suzanne.json",
 					function ( geometry, materials ) {
 						console.log("loading suzanne");
-						geometry.scale(1,1,1);
 						var material = //materials[ 0 ];
 						new THREE.MeshLambertMaterial( { color: 0x00ff00 } );
 						var pmaterial=new Physijs.createMaterial(material,0.9,0.8);
 						avatar = new Physijs.BoxMesh( geometry, pmaterial );
 						console.log("created suzanne mesh");
-						console.dir(geometry)
 						console.log(JSON.stringify(avatar.scale));// = new THREE.Vector3(4.0,1.0,1.0);
+						avatar.setDamping(0.1,0.1);
 						//scene.add(suzanne);
+						var s = 2;
+						console.dir(avatar)
+						avatar.scale.y=s;
+						avatar.scale.x=s;
+						avatar.scale.z=s;
 						avatar.position.z = 0;
 						avatar.position.y = 3;
 						avatar.position.x = 0;
@@ -494,52 +466,16 @@ The user moves a cube around the board trying to knock balls into a cone
 						avatarCam.lookAt(0,2,10);
 						avatar.add(avatarCam);
 						scene.add(avatar);
-						avatar.setDamping(0.1,0.1);
-						avatar.mass = 10000;
-						console.dir(avatar)
-						return avatar;
+						avatar.mass = 1000;
 					},
 					function(xhr){
 						console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );},
 					function(err){console.log("error in loading: "+err);}
-		)
 
-		// loader1.load("models/plane.obj",
-		// 			function ( obj ) {
-		// 				//var theHref = (obj.mainImg_select).attr('href');
-		//
-		// 					loader = new THREE.TextureLoader();
-		// 					// obj.children[0].scale(30,30,30)
-		// 					console.dir(obj);
-		// 					console.log(obj.children[0].geometry);
-		// 					bufferGeometry = obj.children[0].geometry;
-		// 					// bufferGeometry.scale(30,30,30)
-		// 					geometry = new THREE.Geometry().fromBufferGeometry( bufferGeometry );
-		// 					// geometry.scale(20,20,20)
-		// 					console.log(geometry)
-		// 					var material = obj.children[0].material
-		// 					// var material = //materials[ 0 ];
-		// 					// new THREE.MeshLambertMaterial( { color: 0x00ff00 } );
-		//
-		// 					var pmaterial=new Physijs.createMaterial(material,0.9,0.1);
-		// 					model = new Physijs.ConcaveMesh( geometry, pmaterial, 0);
-		// 					model.position.x = 0;
-		// 					model.position.y = 3;
-		// 					model.position.z = 0;
-		// 					scene.add(model);
-		// 					model.castShadow = true;
-		// 				},
-		// 				function(xhr){
-		// 					console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
-		// 				},
-		//
-		// 				function(err){
-		// 					console.log("error in loading: "+err);
-		// 				}
-		//
-		// )
+				)
+				console.dir(avatar)
+				return avatar;
 	}
-
 
 
 	function createConeMesh(r,h){
@@ -715,8 +651,8 @@ The user moves a cube around the board trying to knock balls into a cone
 	// }
 
 
-	function updateAvatar(){
-		// "change the avatar's linear or angular velocity based on controls state (set by WSAD key presses)"
+  function updateAvatar(){
+		"change the avatar's linear or angular velocity based on controls state (set by WSAD key presses)"
 
 		var forward = avatar.getWorldDirection();
 

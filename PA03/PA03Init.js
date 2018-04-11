@@ -139,11 +139,105 @@ The user moves a cube around the board trying to knock balls into a cone
 			wall1_1.add(wall1_2)
 			console.log(wall1_2)
 			scene.add(wall1_1)
+			// maze_group1.add(wall1_1)
+			// scene.add(maze_group1)
+
+			// cone = createConeMesh(4,6);
+			// cone.position.set(10,3,6);
+			// //scene.add(cone);
+			//
+			// floatBox = createBoxMesh2(0x000000,20,1,20);
+			// floatBox.position.set(0,30,0);
+			// floatBox.mass=0;
+			// scene.add(floatBox);
+			//
+			// floatBox2_1 = createBoxMesh2(0x000000,20,1,20);
+			// floatBox2_1.position.set(-20,30,0);
+			// floatBox2_1.mass=0;
+			// scene.add(floatBox2_1);
+			//
+			// floatBox2_2 = createBoxMesh2(0x000000,20,1,20);
+			// floatBox2_2.position.set(-38,35,0);
+			// floatBox2_2.mass=0;
+			// floatBox2_2.rotateZ(-Math.PI/6);
+			// scene.add(floatBox2_2);
+			//
+			//
+			// plane_height = 2.0
+			// const plane1_1_length = 50.0
+			// const plane1_1_width = 20.0
+			// plane1_1 = createBoxMesh2(0x000000,plane1_1_length, plane_height, plane1_1_width);
+			// plane1_1.position.set(200-plane1_1_length/2, plane_height/2, 0);
+			// plane1_1.mass = 0;
+			// scene.add(plane1_1);
+			// const plane1_2_length = 50.0
+			// const plane1_2_width = 20.0
+			// const plane1_2_rotationAngle = Math.PI/6
+			// plane1_2 = createBoxMesh2(0x000000, plane1_2_length, plane_height, plane1_2_width)
+			// plane1_2.mass = 0;
+			// plane1_2.position.set(
+			// 	plane1_1.position.x-plane1_1_length/2-(plane1_2_length/2+plane_height/2*Math.tan(plane1_2_rotationAngle/2))*Math.cos(plane1_2_rotationAngle)-plane_height/2*Math.tan(plane1_2_rotationAngle/2),
+			// 	Math.sin(plane1_2_rotationAngle)*(plane1_2_length/2+plane_height/2*Math.tan(plane1_2_rotationAngle/2))+plane_height/2,
+			// 	plane1_1.position.z
+			// )
+			// plane1_2.rotateZ(-plane1_2_rotationAngle)
+			// scene.add(plane1_2)
+			// const plane1_3_length = 50.0
+			// const plane1_3_width = 20.0
+			// plane1_3 = createBoxMesh2(0x000000, plane1_3_length, plane_height, plane1_2_width)
+			// plane1_3.mass = 0;
+			// plane1_3.position.set(
+			// 	plane1_1.position.x-plane1_1_length/2-plane1_2_length*Math.cos(plane1_2_rotationAngle)-plane1_3_length/2,
+			// 	Math.sin(plane1_2_rotationAngle)*plane1_2_length+plane_height/2,
+			// 	plane1_2.position.z
+			// )
+			// scene.add(plane1_3)
+
+			// npc = createBoxMesh2(0xff0000,1,2,4);
+			// npc.position.set(30,5,-30);
+			// npc.addEventListener('collision',function(other_object){
+			// 	if (other_object==avatar){
+			// 		gameState.health--;
+			// 		NPCreset();
+			//
+			// 		//gameState.scene = 'youwon';
+			//
+			// 	}
+			// 	if(gameState.health<=0) {
+			// 		gameState.scene='lose';
+			// 		//return;
+			// 	}
+			// })
+			// scene.add(npc);
+			//
+			// npc2 = createBoxMesh2(0x00ff00,1,2,4);
+			// npc2.position.set(10,5,-30);
+			// npc2.addEventListener('collision',function(other_object){
+			//
+			// 	if (other_object==avatar){
+			// 		gameState.health++;
+			// 		NPC2reset();
+			// 		//gameState.scene = 'youwon';
+			//
+			// 	}
+			// })
+			// scene.add(npc2);
+
 			var wall = createWall(0xffaa00,50,3,1);
 			wall.position.set(10,0,10);
 			//scene.add(wall);
 
 	}
+
+	// function NPCreset(){
+	// 	npc.__dirtyPosition = true;
+	// 	npc.position.set(randN(10),3,randN(10));
+	// }
+	//
+	// function NPC2reset(){
+	// 	npc2.__dirtyPosition = true;
+	// 	npc2.position.set(10,3,-30);
+	// }
 	function randN(n){
 		return Math.random()*n;
 	}
@@ -603,6 +697,24 @@ The user moves a cube around the board trying to knock balls into a cone
 			redballs[i].setLinearVelocity(new_v);
 		}
 	}
+
+	// function updateNPC(){
+	// 	npc.lookAt(avatar.position);
+	//   npc.__dirtyPosition = true;
+	// 	if(avatar.position.distanceTo(npc.position)<20){
+	// 		npc.setLinearVelocity(npc.getWorldDirection().multiplyScalar(5));
+	// 	}
+	// }
+	//
+	// function updateNPC2(){
+	// 	npc2.lookAt(avatar.position);
+	// 	npc2.__dirtyPosition = true;
+	// 	if(avatar.position.distanceTo(npc2.position)<20){
+	// 		npc2.setLinearVelocity(npc2.getWorldDirection().multiplyScalar(-3));
+	// 	}
+	// }
+
+
 	function updateAvatar(){
 		// "change the avatar's linear or angular velocity based on controls state (set by WSAD key presses)"
 
@@ -642,6 +754,9 @@ The user moves a cube around the board trying to knock balls into a cone
     }
 
 	}
+
+
+
 	function animate() {
 
 		requestAnimationFrame( animate );
@@ -704,7 +819,6 @@ The user moves a cube around the board trying to knock balls into a cone
 	}
 
 
-//========================================================================================================================
 	//the following code is the record of all commented lines. And I deleted those commented lines to keep our program neat.
 	//
 	// /*

@@ -1,0 +1,94 @@
+function initControls(){
+  // here is where we create the eventListeners to respond to operations
+
+    //create a clock for the time-based animation ...
+    clock = new THREE.Clock();
+    clock.start();
+
+    window.addEventListener( 'keydown', keydown);
+    window.addEventListener( 'keyup',   keyup );
+}
+
+function keydown(event){
+  // console.log("Keydown: '"+event.key+"'");
+  //console.dir(event);
+  // first we handle the "play again" key in the "youwon" scene
+  if ((gameState.scene == 'youwon'||gameState.scene == 'lose')&& event.key=='r') {
+    console.log("init");
+    reset();
+    gameState.scene = 'start';
+    gameState.score = 0;
+    addBalls();
+    return;
+  }
+  if(event.key=='p'){
+    gameState.scene = 'main';
+    gameState.score = 0;
+    gameState.health = 10;
+  }
+
+  // this is the regular scene
+  switch (event.key){
+    case "b": addBalls1(); break;
+    // change the way the avatar is moving
+
+    case "w": controls.fwd = true;  break;
+    case "s": controls.bwd = true; break;
+    case "a": controls.left = true; break;
+    case "d": controls.right = true; break;
+    case "r": controls.up = true; break;
+    case "f": controls.down = true; break;
+    case "m": controls.speed = 30; break;
+    case " ": controls.fly = true;
+        console.log("space!!");
+        break;
+    case "h": controls.reset = true; break;
+    case "u": controls.rotateFwd = true; break;
+    case "j": controls.rotateBwd = true; break;
+
+    // switch cameras
+    case "1": gameState.camera = camera; break;
+    case "2": gameState.camera = avatarCam; break;
+    case "3": gameState.camera = edgeCam; break;
+    case "4": gameState.camera = camera1; break;
+    case "5": gameState.camera = edgeCam1; break;
+
+    // move the camera around, relative to the avatar
+    case "ArrowLeft": avatarCam.translateY(1);break;
+    case "ArrowRight": avatarCam.translateY(-1);break;
+    case "ArrowUp": avatarCam.translateZ(-1);break;
+    case "ArrowDown": avatarCam.translateZ(1);break;
+    case "q": avatarCam.rotateY(0.25);break;
+    case "e": avatarCam.rotateY(-0.25);break;
+
+    // add music key
+    case "6": gameState.music = "loop"; break;
+    case "7": gameState.music = "good"; break;
+
+  }
+
+}
+
+function keyup(event){
+  // console.log("Keyup:"+event.key);
+  // console.dir(event);
+  switch (event.key){
+    case "w": controls.fwd   = false;  break;
+    case "s": controls.bwd   = false; break;
+    case "a": controls.left  = false; break;
+    case "d": controls.right = false; break;
+    case "r": controls.up    = false; break;
+    case "f": controls.down  = false; break;
+    case "m": controls.speed = 10; break;
+    case " ": controls.fly = false; break;
+    case "h": controls.reset = false; break;
+    case "u": controls.rotateFwd = false; break;
+    case "j": controls.rotateBwd = false; break;
+    case "k": reset();
+
+    // add music key
+    case "6": gameState.music = "none"; break;
+    case "7": gameState.music = "none"; break;
+
+  }
+}

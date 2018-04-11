@@ -110,8 +110,8 @@ The user moves a cube around the board trying to knock balls into a cone
 			camera.lookAt(0,0,0);
 
 			camera1 = new THREE.PerspectiveCamera( 90, window.innerWidth / window.innerHeight, 0.1, 1000 );
-			camera1.position.set(0,50,-50);
-			camera1.lookAt(0,0,0);
+			camera1.position.set(50,60,-100);
+			camera1.lookAt(0,0,-100);
 
 
 			// create the ground and the skybox
@@ -128,10 +128,10 @@ The user moves a cube around the board trying to knock balls into a cone
 			gameState.camera = avatarCam;
 
       edgeCam = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 0.1, 1000 );
-      edgeCam.position.set(20,20,10);
+      edgeCam.position.set(50,50,-50);
 
 			edgeCam1 = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 0.1, 1000 );
-      edgeCam1.position.set(10,60,10);
+      edgeCam1.position.set(10,50,10);
 
 			wall_color = 0xd7dbe2;
 			wall1_1 = createFloatBoxMesh(wall_color, 100, 0, 0, -50, alongZ = true)

@@ -115,8 +115,8 @@ The user moves a cube around the board trying to knock balls into a cone
 			camera.lookAt(0,0,0);
 
 			camera1 = new THREE.PerspectiveCamera( 90, window.innerWidth / window.innerHeight, 0.1, 1000 );
-			camera1.position.set(0,50,-50);
-			camera1.lookAt(0,0,0);
+			camera1.position.set(50,60,-100);
+			camera1.lookAt(0,0,-100);
 
 
 			// create the ground and the skybox
@@ -133,10 +133,10 @@ The user moves a cube around the board trying to knock balls into a cone
 			gameState.camera = avatarCam;
 
       edgeCam = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 0.1, 1000 );
-      edgeCam.position.set(20,20,10);
+      edgeCam.position.set(50,50,-50);
 
 			edgeCam1 = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 0.1, 1000 );
-      edgeCam1.position.set(10,60,10);
+      edgeCam1.position.set(10,50,10);
 
 			createMaze();
 
@@ -153,14 +153,14 @@ The user moves a cube around the board trying to knock balls into a cone
 
 		maze[1] = createMazeWall(wall_color, 90, 45, 0, 30);
 	//	maze[0].add(maze[1]);
-
-		maze[2] = createMazeWall(wall_color, 100, 45, 0, -50,alongZ=true);
+		maze[2]	= createMazeWall(wall_color, 60, 45, 0, 15);
+		maze[3] = createMazeWall(wall_color, 100, 45, 0, -50,alongZ=true);
 	//	maze[1].add(maze[2]);
 
-		maze[3] = createMazeWall(wall_color, 90, 45, 0, 0);
+		maze[4] = createMazeWall(wall_color, 90, 45, 0, 0);
 	//	maze[1].add(maze[2]);
-	maze[4] = createMazeWall(wall_color, 90, 45, 0, 0,alongZ=true);
-	maze[5] = createMazeWall(wall_color, 60, 45, 0, 15);
+	maze[5] = createMazeWall(wall_color, 90, 45, 0, 0,alongZ=true);
+	maze[6] = createMazeWall(wall_color, 60, 45, 0, 15);
 		var index = 0;
 		while(maze[index+1]!=null){
 			maze[index].add(maze[index+1]);

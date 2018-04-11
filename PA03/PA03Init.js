@@ -704,6 +704,7 @@ The user moves a cube around the board trying to knock balls into a cone
 	}
 
 
+//========================================================================================================================
 	//the following code is the record of all commented lines. And I deleted those commented lines to keep our program neat.
 	//
 	// /*

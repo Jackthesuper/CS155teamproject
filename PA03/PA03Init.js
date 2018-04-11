@@ -134,11 +134,19 @@ The user moves a cube around the board trying to knock balls into a cone
       edgeCam1.position.set(10,50,10);
 
 			wall_color = 0xd7dbe2;
-			wall1_1 = createFloatBoxMesh(wall_color, 100, 0, 0, -50, alongZ = true)
+			wall1_1 = createFloatBoxMesh(wall_color, 200, 0, 0, -50, alongZ = true)
 			wall1_2 = createFloatBoxMesh(wall_color, 15, 10, 0, 0)
+			wall1_3 = createFloatBoxMesh(wall_color, 30, 50, 0, 0)
+			wall1_4 = createFloatBoxMesh(wall_color, 50, -10, 0, 0)
 			wall1_1.add(wall1_2)
+			wall1_1.add(wall1_3)
+			wall1_1.add(wall1_4)
 			console.log(wall1_2)
 			scene.add(wall1_1)
+			wall2 = createFloatBoxMesh(wall_color, 130, 35, 0, -50, alongZ = true)
+			wall2_1 =createFloatBoxMesh(wall_color, 20, 15, 0, -50)
+			wall2.add(wall2_1)
+			scene.add(wall2)
 			// maze_group1.add(wall1_1)
 			// scene.add(maze_group1)
 

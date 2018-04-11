@@ -7,6 +7,15 @@ function initControls(){
 
     window.addEventListener( 'keydown', keydown);
     window.addEventListener( 'keyup',   keyup );
+    window.addEventListener( 'keypress', keypress);
+}
+
+function keypress(event){
+  switch (event.key){
+    case " ": controls.fly = true;
+        console.log("space!!");
+        break;
+  }
 }
 
 function keydown(event){
@@ -38,10 +47,7 @@ function keydown(event){
     case "d": controls.right = true; break;
     case "r": controls.up = true; break;
     case "f": controls.down = true; break;
-    case "m": controls.speed = 30; break;
-    case " ": controls.fly = true;
-        console.log("space!!");
-        break;
+    case "m": controls.speed = 60; break;
     case "h": controls.reset = true; break;
     case "u": controls.rotateFwd = true; break;
     case "j": controls.rotateBwd = true; break;
@@ -79,8 +85,10 @@ function keyup(event){
     case "d": controls.right = false; break;
     case "r": controls.up    = false; break;
     case "f": controls.down  = false; break;
-    case "m": controls.speed = 10; break;
-    case " ": controls.fly = false; break;
+    case "m": controls.speed = 30; break;
+    case " ":
+      controls.fly = false;
+      break;
     case "h": controls.reset = false; break;
     case "u": controls.rotateFwd = false; break;
     case "j": controls.rotateBwd = false; break;

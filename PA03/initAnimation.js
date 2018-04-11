@@ -235,19 +235,41 @@ function updateAvatar(){
   var forward = avatar.getWorldDirection();
 
   if (controls.fwd){
-    avatar.setLinearVelocity(forward.multiplyScalar(controls.speed));
+    // console.log(avatar.getLinearVelocity().y)
+    if(Math.abs(avatar.getLinearVelocity().y)<0.25){
+      avatar.setLinearVelocity(forward.multiplyScalar(controls.speed));
+    }
+    else{
+      avatar.applyCentralForce(forward.multiplyScalar(60*controls.speed))
+    }
   } else if (controls.bwd){
-    avatar.setLinearVelocity(forward.multiplyScalar(-controls.speed));
+    if(Math.abs(avatar.getLinearVelocity().y)<0.25){
+      avatar.setLinearVelocity(forward.multiplyScalar(-controls.speed));
+    }
+    else{
+      avatar.applyCentralForce(forward.multiplyScalar(-60*controls.speed))
+    }
   } else {
     var velocity = avatar.getLinearVelocity();
     velocity.x=velocity.z=0;
     avatar.setLinearVelocity(velocity); //stop the xz motion
   }
-
-  if (controls.fly){
-    avatar.setLinearVelocity(new THREE.Vector3(0,controls.speed,0));
+  if(controls.fly){
+    if(!controls.jump1){
+          console.log("trying to jump1")
+      avatar.setLinearVelocity(new THREE.Vector3(0,controls.speed,0));
+      controls.jump1 = true;
+      airborne = true;
+      controls.fly = false;
+    }
+    else if(!controls.jump2){
+          console.log("trying to jump2")
+      avatar.setLinearVelocity(new THREE.Vector3(0, controls.speed,0))
+      controls.jump2 = true;
+      airborne = true;
+      controls.fly = false;
+    }
   }
-
   if ((controls.left&&!controls.bwd)||(controls.right&&controls.bwd)){
     avatar.setAngularVelocity(new THREE.Vector3(0,controls.speed*0.1,0));
   } else if ((controls.left&&controls.bwd)||(controls.right&&!controls.bwd)){

@@ -13,7 +13,7 @@ var endScene, endCamera, endText;
 var clock;
 var controls =
      {fwd:false, bwd:false, left:false, right:false,
-      speed:10, fly:false, reset:false, rotateFwd:false, rotateBwd:false,
+      speed:30, fly:false, jump1: false, jump2: false, airborne: false, reset:false, rotateFwd:false, rotateBwd:false,
       camera:camera}
 
 var gameState =

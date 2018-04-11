@@ -124,6 +124,15 @@ function createAvatar(){
           avatarCam.lookAt(0,2,10);
           avatar.add(avatarCam);
           //avatar.rotateY=Math.PI/2;
+          avatar.addEventListener('collision', function(other_object, relative_velocity, relative_rotation, contact_normal){
+            // console.log(contact_normal.y<-0.5)
+              if(contact_normal.y<-0.5){
+                  console.log("landed")
+                  controls.jump1 = false;
+                  controls.jump2 = false;
+                  airborne = false;
+              }
+          });
           scene.add(avatar);
           avatar.setDamping(0.01, 0.01);
           avatar.mass = 10000;

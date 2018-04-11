@@ -99,16 +99,18 @@ The user moves a cube around the board trying to knock balls into a cone
 
 	function createMainScene(){
       // setup lighting
-			var light1 = createPointLight();
-			light1.position.set(0,200,20);
-			scene.add(light1);
-			var light0 = new THREE.AmbientLight( 0xffffff,0.25);
+			// var light1 = createPointLight();
+			// light1.position.set(0,200,20);
+			// scene.add(light1);
+			var light0 = new THREE.AmbientLight( 0xffffff, 1);
 			scene.add(light0);
 
-			var light2 = createSpotLight();
-			light2.position.set(0,2,-5);
-			scene.add(light2);
+			var light1 = createPointLight();
+			light1.position.set(0,100,-275);
+			scene.add(light1);
 
+			var light2 = createDirectionalLight();
+			light2.position.set(0,20,-30)
 			// create main camera
 			camera = new THREE.PerspectiveCamera( 90, window.innerWidth / window.innerHeight, 0.1, 1000 );
 			camera.position.set(0,50,0);
@@ -184,7 +186,7 @@ The user moves a cube around the board trying to knock balls into a cone
 		texture.wrapT = THREE.RepeatWrapping;
 		texture.repeat.set( 1, 1 );
 		var material = new THREE.MeshLambertMaterial( { color: color,  map: texture ,side:THREE.DoubleSide} );
-		var pmaterial = new Physijs.createMaterial(material,0.9,0.5)
+		var pmaterial = new Physijs.createMaterial(material,0.9,0.1)
 		mesh = new Physijs.BoxMesh(geometry, pmaterial, 0)
 		mesh.position.set(x, y, z)
 		mesh.castShadow = true;
@@ -295,6 +297,7 @@ The user moves a cube around the board trying to knock balls into a cone
 	function initScene(){
 		//scene = new THREE.Scene();
     var scene = new Physijs.Scene();
+		scene.setGravity(new THREE.Vector3(0, -50, 0));
 		return scene;
 	}
 
@@ -330,7 +333,7 @@ The user moves a cube around the board trying to knock balls into a cone
 
 	function createPointLight(){
 		var light;
-		light = new THREE.PointLight( 0xffffff);
+		light = new THREE.PointLight( 0xffffff, 1);
 		light.castShadow = true;
 		//Set up shadow properties for the light
 		light.shadow.mapSize.width = 1024;  // default
@@ -339,6 +342,19 @@ The user moves a cube around the board trying to knock balls into a cone
 		light.shadow.camera.far = 500      // default
 		return light;
 	}
+
+	function createDirectionalLight(){
+		var light;
+		light = new THREE.DirectionalLight( 0xffffff, 1);
+		light.castShadow = true;
+		//Set up shadow properties for the light
+		light.shadow.mapSize.width = 1024;  // default
+		light.shadow.mapSize.height = 1024; // default
+		light.shadow.camera.near = 0.5;       // default
+		light.shadow.camera.far = 500      // default
+		return light;
+	}
+
 
 
 	function createBoxMesh(color){
@@ -444,7 +460,7 @@ The user moves a cube around the board trying to knock balls into a cone
 						avatar.add(avatarCam);
 						//avatar.rotateY=Math.PI/2;
 						scene.add(avatar);
-						avatar.setDamping(0.1,0.1);
+						avatar.setDamping(0.01, 0.01);
 						avatar.mass = 10000;
 						console.dir(avatar)
 						return avatar;

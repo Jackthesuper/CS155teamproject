@@ -60,10 +60,16 @@ function keydown(event){
     case "5": gameState.camera = edgeCam1; break;
 
     // move the camera around, relative to the avatar
-    case "ArrowLeft": avatarCam.translateY(1);break;
-    case "ArrowRight": avatarCam.translateY(-1);break;
-    case "ArrowUp": avatarCam.translateZ(-1);break;
-    case "ArrowDown": avatarCam.translateZ(1);break;
+    //case "ArrowLeft": avatarCam.translateY(1);break;
+    //case "ArrowRight": avatarCam.translateY(-1);break;
+    //case "ArrowUp": avatarCam.translateZ(-1);break;
+    //case "ArrowDown": avatarCam.translateZ(1);break;
+
+    case "ArrowLeft": camera.translateX(-2);break;
+    case "ArrowRight": camera.translateX(2);break;
+    case "ArrowUp": camera.translateY(2);break;
+    case "ArrowDown": camera.translateY(-2);break;
+
     case "q": avatarCam.rotateY(0.25);break;
     case "e": avatarCam.rotateY(-0.25);break;
 

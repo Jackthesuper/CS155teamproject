@@ -238,18 +238,19 @@ function updateAvatar(){
 
   if (controls.fwd){
     // console.log(avatar.getLinearVelocity().y)
-    if(Math.abs(avatar.getLinearVelocity().y)<0.25){
+    if(!airborne){
       avatar.setLinearVelocity(forward.multiplyScalar(controls.speed));
     }
     else{
-      avatar.applyCentralForce(forward.multiplyScalar(60*controls.speed))
+      // console.log("applying central force")
+      avatar.applyCentralForce(forward.multiplyScalar(15000*controls.speed))
     }
   } else if (controls.bwd){
     if(Math.abs(avatar.getLinearVelocity().y)<0.25){
       avatar.setLinearVelocity(forward.multiplyScalar(-controls.speed));
     }
     else{
-      avatar.applyCentralForce(forward.multiplyScalar(-60*controls.speed))
+      avatar.applyCentralForce(forward.multiplyScalar(-15000*controls.speed))
     }
   } else {
     var velocity = avatar.getLinearVelocity();

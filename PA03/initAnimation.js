@@ -33,9 +33,7 @@ function createMainScene(){
     avatarCam = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 0.1, 1000 );
     //avatar = createAvatar();
     createAvatar();
-    initNPC(0,10,-150,"angrybird.mtl", 'angrybird.obj',0);
-
-    updateNPC();
+    initNPC(0,60,-150,"angrybird.mtl", 'angrybird.obj',0);
 
     gameState.camera = avatarCam;
 
@@ -136,7 +134,7 @@ function animate() {
 
     case "main":
       updateAvatar();
-      // updateNPC();
+      updateNPC();
       // updateNPC2();
       updateRedBalls();
       edgeCam.lookAt(avatar.position);

@@ -1,4 +1,4 @@
-var npcarray;
+
 function initNPC(x,y,z,mtl,obj,position){
     var mesh;
     var mtlLoader = new THREE.MTLLoader();
@@ -24,13 +24,14 @@ function initNPC(x,y,z,mtl,obj,position){
             }
             pmaterial = new THREE.MeshBasicMaterial({})
             pmaterial.visible = false;
-            mesh = new Physijs.SphereMesh(new THREE.SphereGeometry(5.32,32,32), pmaterial ,0, 5);
+            mesh = new Physijs.SphereMesh(new THREE.SphereGeometry(1.2,32,32), pmaterial ,10, 5);
             mesh.add(object)
             //mesh.mass = 10;
             mesh.position.y = y;
             mesh.position.x = x;
             mesh.position.z = z;
             scene.add( mesh );
+            mesh.setDamping(0.1,0.1)
             npcarray[position] = mesh;
             mesh.addEventListener('collision',function(other_object){
               if (other_object==avatar){
@@ -50,14 +51,14 @@ function initNPC(x,y,z,mtl,obj,position){
 }
 function updateNPC(){
   for(i = 0; i<npcarray.length;i++){
-    npcarray[i].update();
+    updateOneNPC(npcarray[i]);
   }
 
 }
-function update(){
-  this.lookAt(avatar.position);
-  this.__dirtyPosition = true;
-  if(avatar.position.distanceTo(this.position)<20){
-    this.setLinearVelocity(this.getWorldDirection().multiplyScalar(5));
+function updateOneNPC(npc){
+  npc.lookAt(avatar.position);
+  npc.__dirtyPosition = true;
+  if(avatar.position.distanceTo(npc.position)<20){
+    npc.setLinearVelocity(npc.getWorldDirection().multiplyScalar(5));
   }
 }

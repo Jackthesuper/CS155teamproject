@@ -18,13 +18,18 @@ function initCoinOBJ(){
   loader.load("models/3d-model.obj",
     function ( obj) {
       console.log("loading obj file");
-            // obj.size.x=0.9;
-            // obj.size.y=0.9;
-            // obj.size.z=0.9;
+
             obj.position.y = 2;
             obj.position.z = 0;
+            material = new THREE.MeshLambertMaterial({color: 0xffffff});
+            obj.children[0].geometry.scale(0.1,0.1,0.1);
+            obj.children[1].geometry.scale(0.1,0.1,0.1);
+            for(i = 0; i<obj.children.length; i++){
+              obj.children[i].geometry.scale(0.1, 0.1, 0.1)
+              mesh = new Physijs.CylinderMesh(obj.children[i].geometry, material, 0);
+              scene.add(mesh)
+            }
 
-            scene.add(obj);
             obj.castShadow = true;
 
             //

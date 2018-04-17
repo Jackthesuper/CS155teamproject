@@ -127,7 +127,7 @@ function createAvatar(){
           avatar.addEventListener('collision', function(other_object, relative_velocity, relative_rotation, contact_normal){
             // console.log(contact_normal.y<-0.5)
               if(contact_normal.y<-0.5){
-                  console.log("landed")
+                  // console.log("landed")
                   controls.jump1 = false;
                   controls.jump2 = false;
                   airborne = false;

@@ -47,6 +47,7 @@ function createMainScene(){
     wall.position.set(10,0,10);
     //scene.add(wall);
 
+    initCoinOBJ();
 }
 
 function createEndScene(){

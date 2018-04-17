@@ -32,6 +32,7 @@ function createMainScene(){
     avatarCam = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 0.1, 1000 );
     //avatar = createAvatar();
     createAvatar();
+    initNPC();
 
     gameState.camera = avatarCam;
 

@@ -1,3 +1,4 @@
+var npcarray;
 function createMainScene(){
     // setup lighting
     // var light1 = createPointLight();
@@ -32,7 +33,9 @@ function createMainScene(){
     avatarCam = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 0.1, 1000 );
     //avatar = createAvatar();
     createAvatar();
-    initNPC();
+    initNPC(0,10,-150,"angrybird.mtl", 'angrybird.obj',0);
+
+    updateNPC();
 
     gameState.camera = avatarCam;
 

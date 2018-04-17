@@ -247,7 +247,7 @@ function updateAvatar(){
       avatar.applyCentralForce(forward.multiplyScalar(15000*controls.speed))
     }
   } else if (controls.bwd){
-    if(Math.abs(avatar.getLinearVelocity().y)<0.25){
+    if(!airborne){
       avatar.setLinearVelocity(forward.multiplyScalar(-controls.speed));
     }
     else{

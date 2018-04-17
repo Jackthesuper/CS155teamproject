@@ -5,6 +5,7 @@ var camera, camera1, avatarCam, edgeCam, edgeCam1;  // we have two cameras in th
 var avatar;
 // var npc;
 // var npc2;
+var coins = [];
 var redballs = [];
 var maze = [];
 // here are some mesh objects ...

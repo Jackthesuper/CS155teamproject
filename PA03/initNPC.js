@@ -93,3 +93,6 @@ function updateOneNPC(npc){
     npcState.launchedTime = time
   }
 }
+function addAllNPC(){
+  initNPC(0,60,-150,"angrybird.mtl", 'angrybird.obj',0);
+}

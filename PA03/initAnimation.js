@@ -33,7 +33,8 @@ function createMainScene(){
     avatarCam = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 0.1, 1000 );
     //avatar = createAvatar();
     createAvatar();
-    initNPC(0,60,-150,"angrybird.mtl", 'angrybird.obj',0);
+    addAllNPC();
+
 
     gameState.camera = avatarCam;
 

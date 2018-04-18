@@ -18,13 +18,18 @@ function initCoinOBJ(index, x, y, z){
   loader.load("models/3d-model.obj",
     function ( obj) {
       console.log("loading obj file");
-            material = new THREE.MeshLambertMaterial({color: 0xffffff});
-            obj.children[0].geometry.scale(0.1,0.1,0.1);
-            mesh = new Physijs.CylinderMesh(obj.children[0].geometry, material, 0);
-            for(var i = 1; i<obj.children.length; i++){
-              obj.children[i].geometry.scale(0.1, 0.1, 0.1)
-              mesh.add(new Physijs.CylinderMesh(obj.children[i].geometry, material, 0));
-            }
+            material = new THREE.MeshLambertMaterial({color:0xffff00});
+            obj.children[0].geometry.scale(0.003,0.003,0.003);
+            obj.children[1].geometry.scale(0.003,0.003,0.003)
+            pmaterial = new THREE.MeshBasicMaterial({})
+            pmaterial.visible = false;
+            mesh = new Physijs.BoxMesh(new THREE.BoxGeometry(1,1,0.3), pmaterial, 1);
+            mesh.add(obj);
+            mesh.translateZ(-10);
+            mesh.translateX(10);
+            mesh.translateY(20);
+            mesh.rotateY(10);
+            //mesh.mass=1;
             scene.add(mesh);
             console.log(coins)
             coins[0] = mesh;
@@ -39,3 +44,12 @@ function initCoinOBJ(index, x, y, z){
             console.log("error in loading: "+err);}
         )
   }
+
+function rotateCoin(){
+    for(var i=0;i<coins.length;i++){
+      coins[i].rotateY(0.05);
+      coins[i].children[i].rotateY(0.05);
+    }
+
+
+}

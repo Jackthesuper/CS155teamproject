@@ -134,6 +134,7 @@ function animate() {
       // updateNPC();
       // updateNPC2();
       updateRedBalls();
+      rotateCoin();
       edgeCam.lookAt(avatar.position);
       edgeCam1.lookAt(avatar.position);
       scene.simulate();

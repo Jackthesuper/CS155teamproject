@@ -33,6 +33,7 @@ function initNPC(x,y,z,mtl,obj,position){
             mesh = new Physijs.SphereMesh(new THREE.SphereGeometry(2.66,32,32), pmaterial ,10);
             mesh.add(object)
             //mesh.mass = 10;
+
             mesh.position.y = y;
             mesh.position.x = x;
             mesh.position.z = z;

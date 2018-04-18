@@ -13,47 +13,41 @@
 
   return mesh;*/
   //var suzanne;
-function initCoinOBJ(x, y, z){
-  var loader = new THREE.OBJLoader();
-  loader.load("models/3d-model.obj",
-    function ( obj) {
-      console.log("loading obj file");
-            material = new THREE.MeshLambertMaterial({color: 0xffff00});
-            obj.children[0].geometry.scale(0.003,0.003,0.003);
-            mesh = new Physijs.CylinderMesh(obj.children[0].geometry, material, 0);
-            for(var i = 1; i<obj.children.length; i++){
-              obj.children[i].geometry.scale(0.003, 0.003, 0.003)
-              mesh.add(new Physijs.CylinderMesh(obj.children[i].geometry, material, 0));
-            }
-            mesh.translateZ(z);
-            mesh.translateX(x);
-            mesh.translateY(y);
-            mesh.rotation.y +=2;
-            scene.add(mesh);
-            console.log(coins)
-            coins[0] = mesh;
-            console.log(coins)
-            mesh.castShadow = true;
-            mesh.addEventListener( 'collision',
-      				function( other_object, relative_velocity, relative_rotation, contact_normal ) {
-      					if (other_object==avatar){
-      						console.log("coin "+i+" hit the cone");
-      						soundEffect('good.wav');
-      						gameState.score += 1;  // add one to the score
-                  //scene.remove(ball);  // this isn't working ...
-      						// make the ball drop below the scene ..
-      						// threejs doesn't let us remove it from the schene...
-      						this.position.y = this.position.y - 100;
-      						this.__dirtyPosition = true;
-      					}
-      				}
-      			)
+  function initCoinOBJ(index, x, y, z){
+    var loader = new THREE.OBJLoader();
+    loader.load("models/3d-model.obj",
+      function ( obj) {
+        console.log("loading obj file");
+              material = new THREE.MeshLambertMaterial({color:0xffff00});
+              obj.children[0].geometry.scale(0.003,0.003,0.003);
+              obj.children[1].geometry.scale(0.003,0.003,0.003)
+              pmaterial = new THREE.MeshBasicMaterial({})
+              pmaterial.visible = false;
+              mesh = new Physijs.BoxMesh(new THREE.BoxGeometry(1,1,0.3), pmaterial, 1);
+              mesh.add(obj);
+              mesh.translateZ(-10);
+              mesh.translateX(10);
+              mesh.translateY(20);
+              mesh.rotateY(10);
+              //mesh.mass=1;
+              scene.add(mesh);
+              console.log(coins)
+              coins[0] = mesh;
+              console.log(coins)
+              obj.castShadow = true;
 
-          },
-          function(xhr){
-            console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );},
+            },
+            function(xhr){
+              console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );},
 
-          function(err){
-            console.log("error in loading: "+err);}
-        )
+            function(err){
+              console.log("error in loading: "+err);}
+          )
+    }
+
+  function rotateCoin(){
+      for(var i=0;i<coins.length;i++){
+        coins[i].rotateY(0.05);
+        coins[i].children[i].rotateY(0.05);
+      }
   }

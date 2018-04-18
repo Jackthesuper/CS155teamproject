@@ -26,7 +26,7 @@ function createMainScene(){
     // create the ground and the skybox
     var ground = createGround('ground.jpg');
     scene.add(ground);
-    var skybox = createSkyBox('bg.jpg',1);
+    var skybox = createSkyBox('bp.jpg',1);
     scene.add(skybox);
 
     // create the avatar

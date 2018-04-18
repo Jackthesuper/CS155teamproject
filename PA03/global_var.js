@@ -8,6 +8,7 @@ var avatar;
 var coins = [];
 var redballs = [];
 var maze = [];
+var npcarray=[];
 // here are some mesh objects ...
 var cone;
 var endScene, endCamera, endText;

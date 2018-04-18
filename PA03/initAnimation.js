@@ -1,3 +1,4 @@
+var npcarray;
 function createMainScene(){
     // setup lighting
     // var light1 = createPointLight();
@@ -32,6 +33,7 @@ function createMainScene(){
     avatarCam = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 0.1, 1000 );
     //avatar = createAvatar();
     createAvatar();
+    initNPC(0,60,-150,"angrybird.mtl", 'angrybird.obj',0);
 
     gameState.camera = avatarCam;
 
@@ -47,7 +49,8 @@ function createMainScene(){
     wall.position.set(10,0,10);
     //scene.add(wall);
 
-    initCoinOBJ();
+    initCoinOBJ(20,0,-120);
+    initCoinOBJ(-20,0,-120);
 }
 
 function createEndScene(){
@@ -131,7 +134,7 @@ function animate() {
 
     case "main":
       updateAvatar();
-      // updateNPC();
+      updateNPC();
       // updateNPC2();
       updateRedBalls();
       edgeCam.lookAt(avatar.position);
@@ -237,18 +240,19 @@ function updateAvatar(){
 
   if (controls.fwd){
     // console.log(avatar.getLinearVelocity().y)
-    if(Math.abs(avatar.getLinearVelocity().y)<0.25){
+    if(!airborne){
       avatar.setLinearVelocity(forward.multiplyScalar(controls.speed));
     }
     else{
-      avatar.applyCentralForce(forward.multiplyScalar(60*controls.speed))
+      // console.log("applying central force")
+      avatar.applyCentralForce(forward.multiplyScalar(15000*controls.speed))
     }
   } else if (controls.bwd){
-    if(Math.abs(avatar.getLinearVelocity().y)<0.25){
+    if(!airborne){
       avatar.setLinearVelocity(forward.multiplyScalar(-controls.speed));
     }
     else{
-      avatar.applyCentralForce(forward.multiplyScalar(-60*controls.speed))
+      avatar.applyCentralForce(forward.multiplyScalar(-15000*controls.speed))
     }
   } else {
     var velocity = avatar.getLinearVelocity();

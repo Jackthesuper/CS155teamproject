@@ -65,10 +65,23 @@ function keydown(event){
     //case "ArrowUp": avatarCam.translateZ(-1);break;
     //case "ArrowDown": avatarCam.translateZ(1);break;
 
-    case "ArrowLeft": camera.translateX(-2);break;
-    case "ArrowRight": camera.translateX(2);break;
-    case "ArrowUp": camera.translateY(2);break;
-    case "ArrowDown": camera.translateY(-2);break;
+    case "ArrowLeft": gameState.camera.translateX(-2);break;
+    case "ArrowRight": gameState.camera.translateX(2);break;
+
+    case "ArrowUp":
+      if(gameState.camera == avatarCam) {
+        avatarCam.translateZ(-2); break;
+      }
+      else{
+          gameState.camera.translateY(2);break;
+      }
+    case "ArrowDown":
+      if(gameState.camera == avatarCam) {
+        avatarCam.translateZ(2); break;
+      }
+      else{
+          gameState.camera.translateY(-2);break;
+      }
 
     case "q": avatarCam.rotateY(0.25);break;
     case "e": avatarCam.rotateY(-0.25);break;

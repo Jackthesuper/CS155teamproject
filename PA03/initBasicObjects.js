@@ -61,9 +61,9 @@ function createGround(image){
   var texture = new THREE.TextureLoader().load( '../images/'+image );
   texture.wrapS = THREE.RepeatWrapping;
   texture.wrapT = THREE.RepeatWrapping;
-  texture.repeat.set( 1, 1 );
+  texture.repeat.set( 32, 32 );
   var material = new THREE.MeshLambertMaterial( { color: 0xffffff,  map: texture ,side:THREE.DoubleSide} );
-  var pmaterial = new Physijs.createMaterial(material,0.9,0.05);
+  var pmaterial = new Physijs.createMaterial(material,0.9,0.6);
   //var mesh = new THREE.Mesh( geometry, material );
   var mesh = new Physijs.BoxMesh( geometry, pmaterial, 0 );
 
@@ -80,6 +80,7 @@ function createGround(image){
 function createSkyBox(image,k){
   // creating a textured plane which receives shadows
   var geometry = new THREE.BoxGeometry( ground_width, ground_width*2, ground_width );
+  // var geometry = new THREE.SphereGeometry( ground_width, 32, 32 );
   var texture = new THREE.TextureLoader().load( '../images/'+image );
   texture.wrapS = THREE.RepeatWrapping;
   texture.wrapT = THREE.RepeatWrapping;
@@ -104,10 +105,10 @@ function createAvatar(){
   loader.load("models/suzanne.json",
         function ( geometry, materials ) {
           console.log("loading suzanne");
-          geometry.scale(1,1,1);
+          geometry.scale(2,2,2);
           var material = //materials[ 0 ];
           new THREE.MeshLambertMaterial( { color: 0x00ff00 } );
-          var pmaterial=new Physijs.createMaterial(material,0.9,0.8);
+          var pmaterial=new Physijs.createMaterial(material,0.9,0.0001);
           avatar = new Physijs.BoxMesh( geometry, pmaterial );
           console.log("created suzanne mesh");
           console.dir(geometry)
@@ -118,10 +119,10 @@ function createAvatar(){
           avatar.position.x = 0;
           avatar.castShadow = true;
           avatar.translateY(20);
-          avatarCam.translateY(-4);
+          avatarCam.translateY(4);
           avatarCam.translateZ(3);
-          avatarCam.position.set(0,2,0);
-          avatarCam.lookAt(0,2,10);
+          // avatarCam.position.set(0,2,0);
+          avatarCam.lookAt(0,4,10);
           avatar.add(avatarCam);
           //avatar.rotateY=Math.PI/2;
           avatar.addEventListener('collision', function(other_object, relative_velocity, relative_rotation, contact_normal){

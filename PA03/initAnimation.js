@@ -24,9 +24,9 @@ function createMainScene(){
 
 
     // create the ground and the skybox
-    var ground = createGround('planeTexture.jpg');
+    var ground = createGround('ground.jpg');
     scene.add(ground);
-    var skybox = createSkyBox('planeTexture.jpg',1);
+    var skybox = createSkyBox('bg.jpg',1);
     scene.add(skybox);
 
     // create the avatar
@@ -262,14 +262,14 @@ function updateAvatar(){
   if(controls.fly){
     if(!controls.jump1){
           console.log("trying to jump1")
-      avatar.setLinearVelocity(new THREE.Vector3(0,controls.speed,0));
+      avatar.setLinearVelocity(new THREE.Vector3(0,controls.jumpspeed,0));
       controls.jump1 = true;
       airborne = true;
       controls.fly = false;
     }
     else if(!controls.jump2){
           console.log("trying to jump2")
-      avatar.setLinearVelocity(new THREE.Vector3(0, controls.speed,0))
+      avatar.setLinearVelocity(new THREE.Vector3(0, controls.jumpspeed,0))
       controls.jump2 = true;
       airborne = true;
       controls.fly = false;

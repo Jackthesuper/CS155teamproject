@@ -16,8 +16,8 @@ var clock;
 var controls =
      {fwd:false, bwd:false, left:false, right:false,
       speed:30, fly:false, jump1: false, jump2: false, airborne: false, reset:false, rotateFwd:false, rotateBwd:false,
-      camera:camera}
-
+      camera:camera, jumpspeed: 30}
+var npcState = {launched: false, launchedTime: 0}
 var gameState =
     {score:0, health:10, scene:'main', camera:'none', music:"none"}
 const grid_width = 5;

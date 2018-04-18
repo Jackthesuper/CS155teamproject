@@ -40,7 +40,7 @@ function initNPC(x,y,z,mtl,obj,position){
             mesh.addEventListener('collision', function(other_object, relative_velocity, relative_rotation, contact_normal){
               // console.log(contact_normal.y<-0.5)
                 if(contact_normal.y>0.5){
-                  health++;
+                  gameState.health++;
                     scene.remove(mesh)
                     delete npcarray[mesh.number]
                 }
@@ -77,7 +77,7 @@ function updateOneNPC(npc){
   }
   time = new Date().getTime()
   // console.log(time-npcState.launchedTime)
-  if(time-npcState.launchedTime > 7000 && npcState.launched){
+  if(time-npcState.launchedTime > 5500 && npcState.launched){
     npcState.launched = false;
     npc.setLinearVelocity(new THREE.Vector3(0,0,0))
   }

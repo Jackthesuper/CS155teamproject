@@ -50,8 +50,8 @@ function createMainScene(){
     wall.position.set(10,0,10);
     //scene.add(wall);
 
-    initCoinOBJ(20,0,-120);
-    initCoinOBJ(-20,0,-120);
+    initCoinOBJ(20,5,-120);
+    initCoinOBJ(-20,5,-120);
 }
 
 function createEndScene(){

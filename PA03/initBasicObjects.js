@@ -131,7 +131,7 @@ function createAvatar(){
                   console.log("landed")
                   controls.jump1 = false;
                   controls.jump2 = false;
-                  airborne = false;
+                  gameState.airborne = false;
               }
           });
           scene.add(avatar);

@@ -242,7 +242,7 @@ function updateAvatar(){
 
   if (controls.fwd){
     // console.log(avatar.getLinearVelocity().y)
-    if(!airborne){
+    if(!gameState.airborne){
       avatar.setLinearVelocity(forward.multiplyScalar(controls.speed));
     }
     else{
@@ -250,7 +250,7 @@ function updateAvatar(){
       avatar.applyCentralForce(forward.multiplyScalar(15000*controls.speed))
     }
   } else if (controls.bwd){
-    if(!airborne){
+    if(!gameState.airborne){
       avatar.setLinearVelocity(forward.multiplyScalar(-controls.speed));
     }
     else{
@@ -266,14 +266,14 @@ function updateAvatar(){
           console.log("trying to jump1")
       avatar.setLinearVelocity(new THREE.Vector3(0,controls.jumpspeed,0));
       controls.jump1 = true;
-      airborne = true;
+      gameState.airborne = true;
       controls.fly = false;
     }
     else if(!controls.jump2){
           console.log("trying to jump2")
       avatar.setLinearVelocity(new THREE.Vector3(0, controls.jumpspeed,0))
       controls.jump2 = true;
-      airborne = true;
+      gameState.airborne = true;
       controls.fly = false;
     }
   }
@@ -294,6 +294,9 @@ function updateAvatar(){
   if (controls.reset){
     avatar.__dirtyPosition = true;
     avatar.position.set(40,10,40);
+  }
+  if(avatar._physijs.touches.length == 0){
+    gameState.airborne = true;
   }
 
 }

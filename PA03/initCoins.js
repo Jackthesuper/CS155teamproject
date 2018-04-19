@@ -21,12 +21,12 @@
     mtlLoader.load( "3d-model.mtl", function(materials ) {
 
     materials.preload();
-    console.log(materials)
+    // console.log(materials)
     loader.setMaterials( materials );
     loader.setPath( 'models/' );
     loader.load("3d-model.obj",
       function ( obj) {
-        console.log(obj);
+        // console.log(obj);
               material = new THREE.MeshLambertMaterial({});
               for(var i = 0; i<obj.children.length; i++){
                 obj.children[i].geometry.scale(0.003,0.003,0.003);
@@ -44,19 +44,19 @@
               mesh.translateX(x);
               mesh.translateY(y);
               mesh.rotateY(10);
-              console.log(mesh);
+              // console.log(mesh);
               //mesh.mass=1;
               scene.add(mesh);
 
               var length=coins.length;
               coins[length] = mesh;
 
-              console.log(coins)
+              // console.log(coins)
               mesh.castShadow = true;
               mesh.addEventListener( 'collision',
       				    function( other_object, relative_velocity, relative_rotation, contact_normal ) {
   					          if (other_object==avatar){
-      						       console.log("coin "+i+" hit the cone");
+      						       // console.log("coin "+i+" hit the cone");
       						       soundEffect('good.wav');
           						   gameState.score += 1;  // add one to the score
                          //scene.remove(ball);  // this isn't working ...

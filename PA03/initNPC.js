@@ -10,12 +10,12 @@ function initNPC(x,y,z,mtl,obj,position){
         materials.preload();
         // materials.materials["Material.006"].transparent = false
         // materials.materials["Material.006"].opacity = 1
-        console.log(materials)
+        // console.log(materials)
         var objLoader = new THREE.OBJLoader();
         objLoader.setMaterials( materials );
         objLoader.setPath( 'models/' );
         objLoader.load(obj, function ( object ){
-          console.log(object)
+          // console.log(object)
             base = 10;
             for(i = 0; i<object.children.length; i++){
               if(i == base){

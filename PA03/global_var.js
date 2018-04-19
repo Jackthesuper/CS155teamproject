@@ -25,3 +25,4 @@ const ground_width = 550;
 const wall_height = 20;
 var nextwall;
 var fans = []
+var dapao = []

@@ -34,7 +34,7 @@ function createMainScene(){
     //avatar = createAvatar();
     createAvatar();
     addAllNPC();
-
+    addAllfans();
 
     gameState.camera = avatarCam;
 
@@ -139,6 +139,7 @@ function animate() {
       // updateNPC2();
       updateRedBalls();
       rotateCoin();
+      rotateFans();
       edgeCam.lookAt(avatar.position);
       edgeCam1.lookAt(avatar.position);
       scene.simulate();

@@ -24,3 +24,4 @@ const grid_width = 5;
 const ground_width = 550;
 const wall_height = 20;
 var nextwall;
+var fans = []

@@ -28,12 +28,12 @@
       function ( obj) {
         console.log(obj);
               material = new THREE.MeshLambertMaterial({});
-              obj.children[0].geometry.scale(0.003,0.003,0.003);
-              obj.children[1].geometry.scale(0.003,0.003,0.003)
-              obj.children[0].material.opacity = 1;
-              obj.children[0].material.transparent = false;
-              obj.children[1].material.opacity = 1;
-              obj.children[1].material.transparent = false;
+              for(var i = 0; i<obj.children.length; i++){
+                obj.children[i].geometry.scale(0.003,0.003,0.003);
+                obj.children[i].material.opacity = 1;
+                obj.children[i].material.transparent = false;
+                obj.children[i].material.color = new THREE.Color(0xffd400)
+              }
               //pmaterial = new THREE.MeshBasicMaterial({})
 
               pmaterial = new Physijs.createMaterial(material);

@@ -61,7 +61,7 @@ function createGround(image){
   var texture = new THREE.TextureLoader().load( '../images/'+image );
   texture.wrapS = THREE.RepeatWrapping;
   texture.wrapT = THREE.RepeatWrapping;
-  texture.repeat.set( 32, 32 );
+  texture.repeat.set( 1, 1 );
   var material = new THREE.MeshLambertMaterial( { color: 0xffffff,  map: texture ,side:THREE.DoubleSide} );
   var pmaterial = new Physijs.createMaterial(material,0.9,0.6);
   //var mesh = new THREE.Mesh( geometry, material );
@@ -131,7 +131,7 @@ function createAvatar(){
                   console.log("landed")
                   controls.jump1 = false;
                   controls.jump2 = false;
-                  gameState.airborne = false;
+                  controls.airborne = false;
               }
           });
           scene.add(avatar);

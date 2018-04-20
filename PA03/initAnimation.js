@@ -24,7 +24,7 @@ function createMainScene(){
 
 
     // create the ground and the skybox
-    var ground = createGround('ground.jpg');
+    var ground = createGround('planeTexture.jpg');
     scene.add(ground);
     var skybox = createSkyBox('bp.jpg',1);
     scene.add(skybox);
@@ -35,6 +35,7 @@ function createMainScene(){
     createAvatar();
     addAllNPC();
     addAllfans();
+    addAllTowers();
 
     gameState.camera = avatarCam;
 
@@ -136,8 +137,7 @@ function animate() {
     case "main":
       updateAvatar();
       updateNPC();
-      // updateNPC2();
-      updateRedBalls();
+      updateAllTowers();
       rotateCoin();
       rotateFans();
       edgeCam.lookAt(avatar.position);
@@ -243,7 +243,7 @@ function updateAvatar(){
 
   if (controls.fwd){
     // console.log(avatar.getLinearVelocity().y)
-    if(!gameState.airborne){
+    if(!controls.airborne){
       avatar.setLinearVelocity(forward.multiplyScalar(controls.speed));
     }
     else{
@@ -251,7 +251,7 @@ function updateAvatar(){
       avatar.applyCentralForce(forward.multiplyScalar(15000*controls.speed))
     }
   } else if (controls.bwd){
-    if(!gameState.airborne){
+    if(!controls.airborne){
       avatar.setLinearVelocity(forward.multiplyScalar(-controls.speed));
     }
     else{
@@ -267,14 +267,14 @@ function updateAvatar(){
           console.log("trying to jump1")
       avatar.setLinearVelocity(new THREE.Vector3(0,controls.jumpspeed,0));
       controls.jump1 = true;
-      gameState.airborne = true;
+      controls.airborne = true;
       controls.fly = false;
     }
     else if(!controls.jump2){
           console.log("trying to jump2")
       avatar.setLinearVelocity(new THREE.Vector3(0, controls.jumpspeed,0))
       controls.jump2 = true;
-      gameState.airborne = true;
+      controls.airborne = true;
       controls.fly = false;
     }
   }
@@ -297,7 +297,7 @@ function updateAvatar(){
     avatar.position.set(40,10,40);
   }
   if(avatar._physijs.touches.length == 0){
-    gameState.airborne = true;
+    controls.airborne = true;
   }
 
 }

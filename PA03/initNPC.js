@@ -15,7 +15,7 @@ function initNPC(x,y,z,mtl,obj,position){
         objLoader.setMaterials( materials );
         objLoader.setPath( 'models/' );
         objLoader.load(obj, function ( object ){
-          // console.log(object)
+          console.log(object)
             base = 10;
             for(i = 0; i<object.children.length; i++){
               if(i == base){
@@ -39,9 +39,10 @@ function initNPC(x,y,z,mtl,obj,position){
             mesh.position.z = z;
             mesh.addEventListener('collision', function(other_object, relative_velocity, relative_rotation, contact_normal){
               // console.log(contact_normal.y<-0.5)
-                if(contact_normal.y>0.5){
+                if(contact_normal.y>0.5 && other_object == avatar){
                   gameState.health += 2;
                     scene.remove(mesh)
+                    console.log("deleted npc")
                     delete npcarray[mesh.number]
                 }
             });

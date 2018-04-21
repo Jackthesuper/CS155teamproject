@@ -106,6 +106,7 @@ function keyup(event){
     case "f": controls.down  = false; break;
     case "m": controls.speed = 30; break;
     case " ":
+      soundEffect('bounce.wav');
       controls.fly = false;
       break;
     case "h": controls.reset = false; break;

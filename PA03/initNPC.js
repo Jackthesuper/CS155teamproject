@@ -52,6 +52,7 @@ function initNPC(x,y,z,mtl,obj,position){
             mesh.number = position;
             mesh.addEventListener('collision',function(other_object){
               if (other_object==avatar){
+                soundEffect('bounce.wav');
                 gameState.health--;
               }
             })

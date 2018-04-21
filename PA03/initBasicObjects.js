@@ -132,6 +132,7 @@ function createAvatar(){
           // avatarCam.position.set(0,2,0);
           avatarCam.lookAt(0,4,10);
           avatar.add(avatarCam);
+          avatar.rotateY(Math.PI);
           //avatar.rotateY=Math.PI/2;
           avatar.addEventListener('collision', function(other_object, relative_velocity, relative_rotation, contact_normal){
             // console.log(contact_normal.y<-0.5)

@@ -42,6 +42,7 @@ function initFans(x,y,z,mtl,obj,number){
             mesh.position.z = z;
             mesh.addEventListener('collision', function(other_object, relative_velocity, relative_rotation, contact_normal){
               if(other_object == avatar){
+                soundEffect('laser.wav');
                 gameState.health -= 2;
               }
             });

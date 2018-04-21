@@ -101,19 +101,27 @@ function createSkyBox(image,k){
 
 function createAvatar(){
   var loader = new THREE.JSONLoader();
-  var loader1 = new THREE.OBJLoader();
-  loader.load("models/suzanne.json",
-        function ( geometry, materials ) {
-          console.log("loading suzanne");
-          geometry.scale(2,2,2);
-          var material = //materials[ 0 ];
-          new THREE.MeshLambertMaterial( { color: 0x00ff00 } );
-          var pmaterial=new Physijs.createMaterial(material,0.9,0.0001);
-          avatar = new Physijs.BoxMesh( geometry, pmaterial );
-          console.log("created suzanne mesh");
-          console.dir(geometry)
-          console.log(JSON.stringify(avatar.scale));// = new THREE.Vector3(4.0,1.0,1.0);
-          //scene.add(suzanne);
+  //var loader1 = new THREE.OBJLoader();
+  var mtlLoader = new THREE.MTLLoader();
+  mtlLoader.setBaseUrl( 'models/' );
+  mtlLoader.setPath( 'models/' );
+  mtlLoader.load( "Minion.mtl", function( materials ) {
+
+      materials.preload();
+      var objLoader = new THREE.OBJLoader();
+      objLoader.setMaterials( materials );
+      objLoader.setPath( 'models/' );
+      objLoader.load("Minion.obj", function ( object ){
+          object.translateX(1.5)
+          object.translateZ(3.8)
+          material = new THREE.MeshBasicMaterial({})
+          material.visible = false;
+          pmaterial = new Physijs.createMaterial(material, 0.0, 1)
+          pmaterial.opacity = (0.5)
+          pmaterial.transparent = true;
+          avatar = new Physijs.BoxMesh(new THREE.BoxGeometry(3,6,3), pmaterial ,10);
+          avatar.add(object)
+          //mesh.mass = 10;
           avatar.position.z = -10;
           avatar.position.y = 3;
           avatar.position.x = 0;
@@ -139,12 +147,16 @@ function createAvatar(){
           avatar.mass = 10000;
           console.dir(avatar)
           return avatar;
-        },
-        function(xhr){
-          console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );},
-        function(err){console.log("error in loading: "+err);}
-  )
 
+      }),
+    function(xhr){
+      console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
+    },
+
+    function(err){
+      console.log("error in loading: "+err)
+    }
+  });
 
 }
 

@@ -45,6 +45,8 @@ function createMainScene(){
     edgeCam1 = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 0.1, 1000 );
     edgeCam1.position.set(10,50,10);
 
+    Boundary();
+
     createMaze();
 
     var wall = createWall(0xffaa00,50,3,1);

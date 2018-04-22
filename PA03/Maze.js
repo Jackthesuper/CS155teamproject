@@ -70,6 +70,24 @@ function createMaze(){
   maze[10].position.set(nextLength/2+2.5,maze[3].position.y,(maze[2].position.z+crrLength/2)-130);//for debug
   crrLength=nextLength;
 
+
+  nextLength =220;
+  maze[11] = createMazeWall(wall_color, nextLength);//at the end of maze[2]
+  maze[11].position.set(nextLength/2+20,maze[3].position.y,(maze[2].position.z+crrLength/2)-240);//for debug
+  crrLength=nextLength;
+
+
+  nextLength =240;
+  maze[12] = createMazeWall(wall_color, nextLength,true);//at the end of maze[2]
+  maze[12].position.set(maze[11].position.x+crrLength/2-2.5,maze[3].position.y,maze[11].position.z-nextLength/2-2.5);//for debug
+  crrLength=nextLength;
+
+
+  nextLength =240;
+  maze[13] = createMazeWall(wall_color, nextLength);//at the end of maze[2]
+  maze[13].position.set(maze[12].position.x-nextLength/2+2.5,maze[3].position.y,maze[12].position.z-nextLength/2-2.5);//for debug
+  crrLength=nextLength;
+
   // nextLength =110;
   // maze[6] = createMazeWall(wall_color, nextLength);
   // //left to right: crr, next, crrAlongZ, nextLength, attach on the positive axis side, crrLength, attach position.

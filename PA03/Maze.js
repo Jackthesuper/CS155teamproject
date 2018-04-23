@@ -18,7 +18,7 @@ function createMaze(){
   maze[1].position.set(maze[0].position.x+nextLength/2+2.5,maze[0].position.y,-100);//for debug
   crrLength=nextLength;
 
-  nextLength =115;
+  nextLength =100;
   maze[2] = createMazeWall(wall_color, nextLength,true);
   //left to right: crr, next, crrAlongZ, nextLength, attach on the positive axis side, crrLength, attach position.
   //setPosition(maze[0],maze[1],true,nextLength,true,crrLength,3);
@@ -36,12 +36,12 @@ function createMaze(){
   maze[4] = createMazeWall(wall_color, nextLength,true);
   //left to right: crr, next, crrAlongZ, nextLength, attach on the positive axis side, crrLength, attach position.
   //setPosition(maze[0],maze[1],true,nextLength,true,crrLength,3);
-  maze[4].position.set(maze[3].position.x-crrLength/2+2.5,maze[3].position.y,(maze[3].position.z+nextLength/2)+2.5);//for debug
+  maze[4].position.set(maze[1].position.x-10-crrLength/2+2.5,maze[0].position.y,(maze[3].position.z+nextLength/2)+2.5);//for debug
   crrLength=nextLength;
 
   nextLength =115;
   maze[5] = createMazeWall(wall_color, nextLength);
-  maze[5].position.set(maze[3].position.x+7.5,maze[3].position.y,(maze[4].position.z+crrLength/2)-2.5);//for debug
+  maze[5].position.set(maze[1].position.x-10+7.5,maze[0].position.y,(maze[4].position.z+crrLength/2)-2.5);//for debug
   crrLength=nextLength;
 
   nextLength =115;
@@ -88,32 +88,6 @@ function createMaze(){
   maze[13].position.set(maze[12].position.x-nextLength/2+2.5,maze[3].position.y,maze[12].position.z-nextLength/2-2.5);//for debug
   crrLength=nextLength;
 
-  // nextLength =110;
-  // maze[6] = createMazeWall(wall_color, nextLength);
-  // //left to right: crr, next, crrAlongZ, nextLength, attach on the positive axis side, crrLength, attach position.
-  // //setPosition(maze[0],maze[1],true,nextLength,true,crrLength,3);
-  // maze[6].position.set(maze[3].position.x,maze[3].position.y,(maze[4].position.z+crrLength/2)+2.5);//for debug
-  // crrLength=nextLength;
-// //	maze[0].add(maze[1]);
-//   maze[2]	= createMazeWall(wall_color, 100,alongZ=true);
-//   crrLength= nextLength;
-//   nextLength =100;
-//   setPosition(maze[1],maze[2],false,nextLength,false,crrLength,2);
-  //
-  // maze[3] = createMazeWall(wall_color, 100, alongZ=true);
-  // crrLength = nextLength;
-  // nextLength =100;
-  // setPosition(maze[2],maze[3],true,nextLength,false,crrLength,4);
-  //
-  // maze[4] = createMazeWall(wall_color, 100);
-  // crrLength = nextLength;
-  // nextLength =100;
-  // setPosition(maze[3],maze[4],false,nextLength,false,crrLength,3);
-
-//	maze[1].add(maze[2]);
-  // maze[5] = createMazeWall(wall_color, 90, 45, 0, 0,alongZ=true);
-  // maze[6] = createMazeWall(wall_color, 60, 45, 0, 15);
-  //stick all of the maze wall together.
   var index = 0;
   while(maze[index]!=null){
     //maze[index].add(maze[index+1]);

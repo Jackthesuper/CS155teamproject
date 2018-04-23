@@ -25,8 +25,11 @@ var gameState =
     {score:0, health:10, scene:'start', camera:'none', music:"none"}
 const grid_width = 5;
 const ground_width = 550;
-const wall_height = 20;
+const wall_height = 100;
 var nextwall;
 var fans = []
 var dapao = []
 var towers = []
+var avatarX = 10;
+var avatarY = 3;
+var avatarZ = -10;

@@ -134,9 +134,9 @@ function createAvatar(){
           avatar = new Physijs.BoxMesh(new THREE.BoxGeometry(3,6,3), pmaterial ,10);
           avatar.add(object)
           //mesh.mass = 10;
-          avatar.position.z = -10;
-          avatar.position.y = 3;
-          avatar.position.x = 0;
+          avatar.position.z = avatarZ;
+          avatar.position.y = avatarY;
+          avatar.position.x = avatarX;
           avatar.castShadow = true;
           avatar.translateY(20);
           avatarCam.translateY(4);

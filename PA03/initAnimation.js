@@ -314,7 +314,7 @@ function updateAvatar(){
 
   if (controls.reset){
     avatar.__dirtyPosition = true;
-    avatar.position.set(40,10,40);
+    avatar.position.set(avatarX,avatarY,avatarZ);
   }
   if(avatar._physijs.touches.length == 0){
     controls.airborne = true;

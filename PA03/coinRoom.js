@@ -58,7 +58,5 @@ function coinRoom(){
   function rotateStick(){
       roomStick.rotateX(Math.PI/100);
       roomStick.__dirtyRotation = true;
-      //roomStick.position.set(120,5,-320);
-      //roomStick.__dirtyPosition = true;
 
   }

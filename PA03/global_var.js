@@ -10,6 +10,7 @@ var redballs = [];
 var maze = [];
 var boundary = [];
 var npcarray=[];
+
 // here are some mesh objects ...
 var cone;
 var endScene, endCamera, endText;
@@ -20,7 +21,7 @@ var controls =
       camera:camera, jumpspeed: 30, tpFrom: null}
 var npcState = {launched: false, launchedTime: 0}
 var gameState =
-    {score:0, health:10, scene:'main', camera:'none', music:"none"}
+    {score:0, health:10, scene:'start', camera:'none', music:"none"}
 const grid_width = 5;
 const ground_width = 550;
 const wall_height = 20;

@@ -58,7 +58,7 @@ function createWall(color,w,h,d){
 function createGround(image){
   // creating a textured plane which receives shadows
   var geometry = new THREE.PlaneGeometry( ground_width, ground_width, 128 );
-  var texture = new THREE.TextureLoader().load( '../images/'+image );
+  var texture = new THREE.TextureLoader().load( 'images/'+image );
   texture.wrapS = THREE.RepeatWrapping;
   texture.wrapT = THREE.RepeatWrapping;
   texture.repeat.set( 1, 1 );
@@ -81,7 +81,7 @@ function createSkyBox(image,k){
   // creating a textured plane which receives shadows
   var geometry = new THREE.BoxGeometry( ground_width, ground_width*2, ground_width );
   // var geometry = new THREE.SphereGeometry( ground_width, 32, 32 );
-  var texture = new THREE.TextureLoader().load( '../images/'+image );
+  var texture = new THREE.TextureLoader().load( 'images/'+image );
   texture.wrapS = THREE.RepeatWrapping;
   texture.wrapT = THREE.RepeatWrapping;
   texture.repeat.set( 1, 2 );
@@ -91,13 +91,25 @@ function createSkyBox(image,k){
   var mesh = new Physijs.Mesh( geometry, material, 0 );
   mesh.position.z -= ground_width/2-5
   //mesh.receiveShadow = false;
-
-
   return mesh
   // we need to rotate the mesh 90 degrees to make it horizontal not vertical
-
-
 }
+
+
+function createPlane(image){
+  var geometry = new THREE.BoxGeometry(180,0,90);
+  var texture = new THREE.TextureLoader().load( 'images/'+image );
+  //texture.wrapS = THREE.RepeatWrapping;
+  //texture.wrapT = THREE.RepeatWrapping;
+  //texture.repeat.set( 1, 2 );
+  var material = new THREE.MeshLambertMaterial( { color: 0xffffff,  map: texture ,side:THREE.DoubleSide} );
+  var mesh = new Physijs.Mesh( geometry, material, 0 );
+  return mesh
+}
+
+
+
+
 
 function createAvatar(){
   var loader = new THREE.JSONLoader();

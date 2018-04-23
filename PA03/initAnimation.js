@@ -1,4 +1,75 @@
+
+// local variables
 var npcarray;
+
+
+// initialize render scene physijs
+function initPhysijs(){
+  Physijs.scripts.worker = 'js/physijs_worker.js';
+  Physijs.scripts.ammo = 'ammo.js';
+}
+
+function initScene(){
+  var scene = new Physijs.Scene();
+  scene.setGravity(new THREE.Vector3(0, -50, 0));
+  return scene;
+}
+
+function initRenderer(){
+  renderer = new THREE.WebGLRenderer();
+  renderer.setSize( window.innerWidth, window.innerHeight-50 );
+  document.body.appendChild( renderer.domElement );
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+}
+
+
+// create start, end, loose scene
+function createStartScene(){
+  startScene = initScene();
+  startText = createPlane('start.png',5);
+  startScene.add(startText);
+  var light = createPointLight();
+  light.position.set(0,200,20);
+  startScene.add(light);
+  //gameState.scene='start';
+  startCamera = new THREE.PerspectiveCamera( 90, window.innerWidth / window.innerHeight, 0.1, 1000 );
+  startCamera.position.set(0,50,1);
+  startCamera.lookAt(0,0,0);
+}
+
+function createEndScene(){
+  endScene = initScene();
+  endText = createSkyBox('youwon.png',);
+  endScene.add(endText);
+
+  var light1 = createPointLight();
+  light1.position.set(0,200,0);
+  endScene.add(light1);
+
+  endCamera = new THREE.PerspectiveCamera( 90, window.innerWidth / window.innerHeight, 0.1, 1000 );
+  endCamera.position.set(0,50,1);
+  endCamera.lookAt(0,0,0);
+
+}
+
+function createLoseScene(){
+  loseScene = initScene();
+  loseText = createSkyBox('lose.png',5);
+  loseScene.add(loseText);
+  var light = createPointLight();
+  light.position.set(0,200,20);
+  loseScene.add(light);
+  loseCamera = new THREE.PerspectiveCamera( 90, window.innerWidth / window.innerHeight, 0.1, 1000 );
+  loseCamera.position.set(0,50,1);
+  loseCamera.lookAt(0,0,0);
+}
+
+
+
+
+
+// create main scene
 function createMainScene(){
     // setup lighting
     // var light1 = createPointLight();
@@ -13,6 +84,7 @@ function createMainScene(){
 
     var light2 = createDirectionalLight();
     light2.position.set(0,20,-30)
+
     // create main camera
     camera = new THREE.PerspectiveCamera( 90, window.innerWidth / window.innerHeight, 0.1, 1000 );
     camera.position.set(0,80,0);
@@ -57,69 +129,15 @@ function createMainScene(){
     initCoinOBJ(-20,5,-120);
 }
 
-function createEndScene(){
-  endScene = initScene();
-  endText = createSkyBox('youwon.png',10);
-  //endText.rotateX(Math.PI);
-  endScene.add(endText);
-  var light1 = createPointLight();
-  light1.position.set(0,200,0);
-  endScene.add(light1);
-
-  endCamera = new THREE.PerspectiveCamera( 90, window.innerWidth / window.innerHeight, 0.1, 1000 );
-  endCamera.position.set(0,50,1);
-  endCamera.lookAt(0,0,0);
-
-}
-function createStartScene(){
-  startScene = initScene();
-  startText = createSkyBox('start.png',5);
-  startScene.add(startText);
-  var light = createPointLight();
-  light.position.set(0,200,20);
-  startScene.add(light);
-  //gameState.scene='start';
-  startCamera = new THREE.PerspectiveCamera( 90, window.innerWidth / window.innerHeight, 0.1, 1000 );
-  startCamera.position.set(0,50,1);
-  startCamera.lookAt(0,0,0);
-}
-
-function createLoseScene(){
-  loseScene = initScene();
-  loseText = createSkyBox('lose.png',5);
-  loseScene.add(loseText);
-  var light = createPointLight();
-  light.position.set(0,200,20);
-  loseScene.add(light);
-  loseCamera = new THREE.PerspectiveCamera( 90, window.innerWidth / window.innerHeight, 0.1, 1000 );
-  loseCamera.position.set(0,50,1);
-  loseCamera.lookAt(0,0,0);
-}
-//this method is called in main scene, too c
 
 
-function initRenderer(){
-  renderer = new THREE.WebGLRenderer();
-  renderer.setSize( window.innerWidth, window.innerHeight-50 );
-  document.body.appendChild( renderer.domElement );
-  renderer.shadowMap.enabled = true;
-  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-}
 
-function initScene(){
-  //scene = new THREE.Scene();
-  var scene = new Physijs.Scene();
-  scene.setGravity(new THREE.Vector3(0, -50, 0));
-  return scene;
-}
 
-function initPhysijs(){
-  Physijs.scripts.worker = 'js/physijs_worker.js';
-  Physijs.scripts.ammo = 'ammo.js';
-}
+
+
+
 
 function animate() {
-
   requestAnimationFrame( animate );
 
   switch(gameState.scene) {
@@ -128,7 +146,6 @@ function animate() {
       renderer.render( loseScene, loseCamera );
       break;
     case "start":
-      startText.rotateY(0.005);
       renderer.render( startScene, startCamera );
       break;
     case "youwon":

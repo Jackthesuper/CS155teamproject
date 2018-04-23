@@ -159,6 +159,7 @@ function animate() {
       updateAllTowers();
       rotateCoin();
       rotateFans();
+      rotateStick();
       edgeCam.lookAt(avatar.position);
       edgeCam1.lookAt(avatar.position);
       scene.simulate();

@@ -10,6 +10,7 @@ var redballs = [];
 var maze = [];
 var boundary = [];
 var npcarray=[];
+var roomStick;
 
 // here are some mesh objects ...
 var cone;

@@ -27,6 +27,7 @@ function createBoundary(color,length,alongZ = false){
   texture.wrapT = THREE.RepeatWrapping;
   texture.repeat.set( 1, 1 );
   var material = new THREE.MeshLambertMaterial( { color: color,  map: texture ,side:THREE.DoubleSide} );
+  material.visible = false;
   var pmaterial = new Physijs.createMaterial(material,0.9,0.5)
   mesh = new Physijs.BoxMesh(geometry, pmaterial, 0)
   //mesh.position.set(x, y, z)

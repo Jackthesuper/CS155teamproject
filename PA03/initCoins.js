@@ -81,7 +81,7 @@
           );
         });
     }
-
+    
   function rotateCoin(){
       for(var i=0;i<coins.length;i++){
         //coins[i].rotateY(0.05);

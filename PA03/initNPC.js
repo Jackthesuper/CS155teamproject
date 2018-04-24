@@ -40,7 +40,7 @@ function initNPC(x,y,z,mtl,obj,position){
             mesh.addEventListener('collision', function(other_object, relative_velocity, relative_rotation, contact_normal){
               // console.log(contact_normal.y<-0.5)
                 if(contact_normal.y>0.5 && other_object == avatar){
-                  gameState.health += 2;
+                  gameState.health += 4;
                     scene.remove(mesh)
                     console.log("deleted npc")
                     delete npcarray[mesh.number]

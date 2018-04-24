@@ -45,6 +45,7 @@ function createMaze(){
   maze[5] = createMazeWall(wall_color, nextLength);
   maze[5].position.set(maze[1].position.x-10+7.5,maze[0].position.y,(maze[4].position.z+crrLength/2)-2.5);//for debug
   crrLength=nextLength;
+  maze[5].visible = false;
 
   nextLength =115;
   maze[6] = createMazeWall(wall_color, nextLength);//at the end of maze[2]

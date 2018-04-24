@@ -40,7 +40,7 @@ function createStartScene(){
 
 function createEndScene(){
   endScene = initScene();
-  endText = createSkyBox('youwon.png',);
+  endText = createSkyBox('youwon.png');
   endScene.add(endText);
 
   var light1 = createPointLight();
@@ -94,6 +94,17 @@ function createMainScene(){
     camera1.position.set(50,60,-100);
     camera1.lookAt(0,0,-100);
 
+    var listener = new THREE.AudioListener();
+    camera.add(listener);
+    var sound = new THREE.Audio(listener);
+    var audioLoader = new THREE.AudioLoader();
+    audioLoader.load('/sounds/background.mp3',function(buffer){
+      console.log("test")
+      sound.setBuffer(buffer);
+      sound.setLoop(true);
+      sound.setVolume(0.5);
+      sound.play();
+    });
 
     // create the ground and the skybox
     var ground = createGround('planeTexture.jpg');

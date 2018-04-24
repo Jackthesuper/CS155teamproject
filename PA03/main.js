@@ -17,7 +17,7 @@ The user moves a cube around the board trying to knock balls into a cone
 			scene = initScene();
 			createEndScene();
 			initRenderer();
-			createMainScene();
+			createMainScene();      
 			createLoseScene();
 			createStartScene();
 	}

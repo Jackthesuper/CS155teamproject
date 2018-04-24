@@ -54,7 +54,7 @@ function initNPC(x,y,z,mtl,obj,position){
             mesh.launchedTime = 0;
             mesh.addEventListener('collision',function(other_object){
               if (other_object==avatar){
-                soundEffect('bounce.wav');
+                soundEffect('laser.wav');
                 gameState.health--;
               }
             })

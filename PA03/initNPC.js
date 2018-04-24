@@ -50,6 +50,8 @@ function initNPC(x,y,z,mtl,obj,position){
             mesh.setDamping(0.18,0.1)
             npcarray[position] = mesh;
             mesh.number = position;
+            mesh.launched = false;
+            mesh.launchedTime = 0;
             mesh.addEventListener('collision',function(other_object){
               if (other_object==avatar){
                 soundEffect('bounce.wav');
@@ -79,22 +81,27 @@ function updateOneNPC(npc){
   }
   time = new Date().getTime()
   // console.log(time-npcState.launchedTime)
-  if(time-npcState.launchedTime > 5500 && npcState.launched){
-    npcState.launched = false;
+  if(time-npc.launchedTime > 7500 && npc.launched){
+    npc.launched = false;
     npc.setLinearVelocity(new THREE.Vector3(0,0,0))
   }
-  if(avatar.position.distanceTo(npc.position)<50 && !npcState.launched){
+  if(avatar.position.distanceTo(npc.position)<50 && !npc.launched){
     axis = new THREE.Vector3(0,1,0)
     target = avatar.position.clone()
     // npc.children[0].lookAt(target.applyAxisAngle(axis, Math.PI/2))
     npc.lookAt(avatar.position)
     npc.__dirtyPosition = true;
     npc.__dirtyRotation = true;
-    npc.setLinearVelocity(npc.getWorldDirection().multiplyScalar(20).add(new THREE.Vector3(0,60,0)));
-    npcState.launched = true;
-    npcState.launchedTime = time
+    npc.setLinearVelocity(npc.getWorldDirection().multiplyScalar(20).add(new THREE.Vector3(0,40,0)));
+    npc.launched = true;
+    npc.launchedTime = time
   }
 }
 function addAllNPC(){
   initNPC(0,60,-150,"angrybird.mtl", 'angrybird.obj',0);
+  initNPC(194, 30, -38, "angrybird.mtl", 'angrybird.obj', 1);
+  initNPC(201, 3, -7, "angrybird.mtl", 'angrybird.obj', 2)
+  initNPC(224, 3, -37, "angrybird.mtl", 'angrybird.obj', 3)
+  initNPC(214, 3, -37, "angrybird.mtl", 'angrybird.obj', 4)
+  initNPC(205, 3, -37, "angrybird.mtl", 'angrybird.obj', 5)
 }

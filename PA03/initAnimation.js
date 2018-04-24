@@ -121,9 +121,6 @@ function createMainScene(){
 
     createMaze();
 
-    var wall = createWall(0xffaa00,50,3,1);
-    wall.position.set(10,0,10);
-    //scene.add(wall);
     coinRoom();
     initCoinOBJ(20,5,-120);
     initCoinOBJ(-20,5,-120);

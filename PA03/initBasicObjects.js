@@ -128,7 +128,7 @@ function createAvatar(){
           object.translateZ(3.8)
           material = new THREE.MeshBasicMaterial({})
           material.visible = false;
-          pmaterial = new Physijs.createMaterial(material, 0.0, 1)
+          pmaterial = new Physijs.createMaterial(material, 0.0, 0.01)
           pmaterial.opacity = (0.5)
           pmaterial.transparent = true;
           avatar = new Physijs.BoxMesh(new THREE.BoxGeometry(3,6,3), pmaterial ,10);
@@ -139,17 +139,17 @@ function createAvatar(){
           avatar.position.x = avatarX;
           avatar.castShadow = true;
           avatar.translateY(20);
-          avatarCam.translateY(4);
+          avatarCam.translateY(2);
           avatarCam.translateZ(3);
           // avatarCam.position.set(0,2,0);
-          avatarCam.lookAt(0,4,10);
+          avatarCam.lookAt(0,2,10);
           avatar.add(avatarCam);
           avatar.rotateY(Math.PI);
           //avatar.rotateY=Math.PI/2;
           avatar.addEventListener('collision', function(other_object, relative_velocity, relative_rotation, contact_normal){
             // console.log(contact_normal.y<-0.5)
               if(contact_normal.y<-0.5){
-                  console.log("landed")
+                  // console.log("landed")
                   controls.jump1 = false;
                   controls.jump2 = false;
                   controls.airborne = false;

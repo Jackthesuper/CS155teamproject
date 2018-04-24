@@ -1,4 +1,4 @@
-function initFans(x,y,z,mtl,obj,number){
+function initFans(x,y,z,mtl,obj,number, alongZ = 'true'){
     var mesh;
     var mtlLoader = new THREE.MTLLoader();
     mtlLoader.setBaseUrl( 'models/' );
@@ -40,10 +40,13 @@ function initFans(x,y,z,mtl,obj,number){
             mesh.position.y = y;
             mesh.position.x = x;
             mesh.position.z = z;
+            if(!alongZ){
+              mesh.rotateY(Math.PI/2)
+            }
             mesh.addEventListener('collision', function(other_object, relative_velocity, relative_rotation, contact_normal){
               if(other_object == avatar){
                 soundEffect('laser.wav');
-                gameState.health -= 2;
+                gameState.health --;
               }
             });
             scene.add( mesh );
@@ -65,12 +68,16 @@ function initFans(x,y,z,mtl,obj,number){
 function addBranch(pmaterial, rotation){
   branch = new Physijs.BoxMesh(new THREE.BoxGeometry(13, 3, 0.8), pmaterial, 0);
   branch.rotateZ(rotation)
-  branch.translateZ(2)
+  branch.translateZ(1)
   branch.translateX(8)
   return branch
 }
 function addAllfans(){
-  initFans(0,15,-200,"Fans.mtl", 'Fans.obj',0);
+  initFans(20,15,-200,"Fans.mtl", 'Fans.obj',0);
+  initFans(64, 15, -17, "Fans.mtl", "Fans.obj", 1,false)
+  initFans(93, 15, -12, "Fans.mtl", "Fans.obj", 2, false)
+  initFans(107, 15, -18, "Fans.mtl", "Fans.obj", 3, false)
+  initFans(180, 15, -97, "Fans.mtl", "Fans.obj", 4, false)
 }
 
 function rotateFans(){

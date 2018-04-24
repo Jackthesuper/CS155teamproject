@@ -8,35 +8,37 @@ function createMaze(){
   nextLength =500;
   maze[0] = createMazeWall(wall_color,nextLength,alongZ=true);
   maze[0].position.set(0, 0, -nextLength/2);
+  maze[0].length = 500
   crrLength = nextLength;
 
 
-  nextLength =140;
+  nextLength =110;
   maze[1] = createMazeWall(wall_color, nextLength);
   //left to right: crr, next, crrAlongZ, nextLength, attach on the positive axis side, crrLength, attach position.
   //setPosition(maze[0],maze[1],true,nextLength,true,crrLength,3);
   maze[1].position.set(maze[0].position.x+nextLength/2+2.5,maze[0].position.y,-100);//for debug
+  maze[1].length = 110;
   crrLength=nextLength;
 
   nextLength =100;
   maze[2] = createMazeWall(wall_color, nextLength,true);
   //left to right: crr, next, crrAlongZ, nextLength, attach on the positive axis side, crrLength, attach position.
   //setPosition(maze[0],maze[1],true,nextLength,true,crrLength,3);
-  maze[2].position.set(maze[1].position.x+60,maze[1].position.y,-crrLength/2);
+  maze[2].position.set(maze[1].position.x+maze[1].length/2+20,maze[1].position.y,-70);
   crrLength=nextLength;
 
   nextLength =110;
   maze[3] = createMazeWall(wall_color, nextLength);
   //left to right: crr, next, crrAlongZ, nextLength, attach on the positive axis side, crrLength, attach position.
   //setPosition(maze[0],maze[1],true,nextLength,true,crrLength,3);
-  maze[3].position.set(maze[1].position.x-10,maze[1].position.y,maze[2].position.z);//for debug
+  maze[3].position.set(maze[0].position.x+nextLength/2+2.5, maze[1].position.y, -40);//for debug
   crrLength=nextLength;
 
-  nextLength =30;
+  nextLength =45;
   maze[4] = createMazeWall(wall_color, nextLength,true);
   //left to right: crr, next, crrAlongZ, nextLength, attach on the positive axis side, crrLength, attach position.
   //setPosition(maze[0],maze[1],true,nextLength,true,crrLength,3);
-  maze[4].position.set(maze[1].position.x-10-crrLength/2+2.5,maze[0].position.y,(maze[3].position.z+nextLength/2)+2.5);//for debug
+  maze[4].position.set(maze[0].position.x+20+2.5,maze[0].position.y,(maze[3].position.z-nextLength/2)+2.5);//for debug
   crrLength=nextLength;
 
   nextLength =115;

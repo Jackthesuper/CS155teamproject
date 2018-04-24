@@ -73,7 +73,8 @@
 
             },
             function(xhr){
-              console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );},
+              // console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
+            },
 
             function(err){
               console.log("error in loading: "+err);}

@@ -52,5 +52,5 @@ function updateAllTowers(){
 }
 
 function addAllTowers(){
-  initTower(0, 15, -150, 0)
+  initTower(-150, 15, -250, 0)
 }

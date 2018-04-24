@@ -119,6 +119,7 @@ function createMainScene(){
     addAllNPC();
     addAllfans();
     addAllTowers();
+    initArrow(15,3,-10);
 
     gameState.camera = avatarCam;
 

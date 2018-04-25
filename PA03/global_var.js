@@ -11,7 +11,7 @@ var maze = [];
 var boundary = [];
 var npcarray=[];
 var roomStick;
-
+var ground;
 // here are some mesh objects ...
 var cone;
 var endScene, endCamera, endText;
@@ -28,8 +28,8 @@ const ground_width = 550;
 const wall_height = 100;
 var nextwall;
 var fans = []
-var dapao = []
 var towers = []
+var mouth = [];
 var avatarX = 10;
 var avatarY = 3;
 var avatarZ = -10;

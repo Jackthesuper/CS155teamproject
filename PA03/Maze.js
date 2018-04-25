@@ -38,7 +38,7 @@ function createMaze(){
   maze[4] = createMazeWall(wall_color, nextLength,true);
   //left to right: crr, next, crrAlongZ, nextLength, attach on the positive axis side, crrLength, attach position.
   //setPosition(maze[0],maze[1],true,nextLength,true,crrLength,3);
-  maze[4].position.set(maze[0].position.x+20+2.5,maze[0].position.y,(maze[3].position.z-nextLength/2)+2.5);//for debug
+  maze[4].position.set(maze[0].position.x+20+2.5,maze[0].position.y,(maze[3].position.z-nextLength/2)-2.5);//for debug
   crrLength=nextLength;
 
   nextLength =115;

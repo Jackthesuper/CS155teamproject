@@ -98,7 +98,7 @@ function updateOneNPC(npc){
   }
 }
 function addAllNPC(){
-  initNPC(0,60,-150,"angrybird.mtl", 'angrybird.obj',0);
+  initNPC(20,60,-150,"angrybird.mtl", 'angrybird.obj',0);
   initNPC(194, 30, -38, "angrybird.mtl", 'angrybird.obj', 1);
   initNPC(201, 3, -7, "angrybird.mtl", 'angrybird.obj', 2)
   initNPC(224, 3, -37, "angrybird.mtl", 'angrybird.obj', 3)

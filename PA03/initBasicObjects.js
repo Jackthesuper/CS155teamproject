@@ -140,7 +140,7 @@ function createAvatar(){
           avatar.castShadow = true;
           avatar.translateY(20);
           avatarCam.translateY(2);
-          avatarCam.translateZ(3);
+          avatarCam.translateZ(1.5);
           // avatarCam.position.set(0,2,0);
           avatarCam.lookAt(0,2,10);
           avatar.add(avatarCam);

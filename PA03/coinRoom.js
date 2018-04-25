@@ -30,6 +30,7 @@ function coinRoom(){
       }
 
       initCoinOBJ(177, 3, -100)
+      initCoinOBJ(13,3,-49)
       roomStick = createStick(0X0000ff);
 
       scene.add(roomStick);

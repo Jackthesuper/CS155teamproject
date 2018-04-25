@@ -107,7 +107,7 @@ function createMainScene(){
     });
 
     // create the ground and the skybox
-    var ground = createGround('planeTexture.jpg');
+    ground = createGround('planeTexture.jpg');
     scene.add(ground);
     var skybox = createSkyBox('bp.jpg',1);
     scene.add(skybox);
@@ -120,6 +120,7 @@ function createMainScene(){
     addAllfans();
     addAllTowers();
     initArrow(15,3,-10);
+    addAllMouths()
 
     gameState.camera = avatarCam;
 
@@ -169,6 +170,7 @@ function animate() {
       rotateCoin();
       rotateFans();
       rotateStick();
+      updateMouth();
       edgeCam.lookAt(avatar.position);
       edgeCam1.lookAt(avatar.position);
       scene.simulate();

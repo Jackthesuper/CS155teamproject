@@ -24,45 +24,54 @@ function initRenderer(){
 }
 
 
-// create start, end, loose scene
+// create start scene
 function createStartScene(){
   startScene = initScene();
-  startText = createPlane('start.png',5);
-  startScene.add(startText);
+  // startcamera
+  startCamera = new THREE.PerspectiveCamera( 90, window.innerWidth / window.innerHeight, 0.1, 1000 );
+  startCamera.position.set(0,50,0);
+  startCamera.lookAt(0,0,0);
+  // light
   var light = createPointLight();
   light.position.set(0,200,20);
   startScene.add(light);
-  //gameState.scene='start';
-  startCamera = new THREE.PerspectiveCamera( 90, window.innerWidth / window.innerHeight, 0.1, 1000 );
-  startCamera.position.set(0,50,1);
-  startCamera.lookAt(0,0,0);
+  // start image
+  startText = createPlane('start.jpeg');
+  startScene.add(startText);
 }
 
+
+// create youwon scene
 function createEndScene(){
   endScene = initScene();
-  endText = createSkyBox('youwon.png');
-  endScene.add(endText);
-
+  // end camera
+  endCamera = new THREE.PerspectiveCamera( 90, window.innerWidth / window.innerHeight, 0.1, 1000 );
+  endCamera.position.set(0,50,0);
+  endCamera.lookAt(0,0,0);
+  // light
   var light1 = createPointLight();
   light1.position.set(0,200,0);
   endScene.add(light1);
-
-  endCamera = new THREE.PerspectiveCamera( 90, window.innerWidth / window.innerHeight, 0.1, 1000 );
-  endCamera.position.set(0,50,1);
-  endCamera.lookAt(0,0,0);
-
+  // end image
+  endText = createPlane('youwon.jpeg');
+  endScene.add(endText);
 }
 
+
+// create lose scene
 function createLoseScene(){
   loseScene = initScene();
-  loseText = createSkyBox('lose.png',5);
-  loseScene.add(loseText);
+  // camera
+  loseCamera = new THREE.PerspectiveCamera( 90, window.innerWidth / window.innerHeight, 0.1, 1000 );
+  loseCamera.position.set(0,50,0);
+  loseCamera.lookAt(0,0,0);
+  // light
   var light = createPointLight();
   light.position.set(0,200,20);
   loseScene.add(light);
-  loseCamera = new THREE.PerspectiveCamera( 90, window.innerWidth / window.innerHeight, 0.1, 1000 );
-  loseCamera.position.set(0,50,1);
-  loseCamera.lookAt(0,0,0);
+  // lose image
+  loseText = createPlane('lose.jpeg',);
+  loseScene.add(loseText);
 }
 
 
@@ -151,14 +160,12 @@ function animate() {
 
   switch(gameState.scene) {
     case "lose":
-      loseText.rotateY(0.005);
       renderer.render( loseScene, loseCamera );
       break;
     case "start":
       renderer.render( startScene, startCamera );
       break;
     case "youwon":
-      endText.rotateY(0.005);
       renderer.render( endScene, endCamera );
       break;
 
@@ -172,6 +179,14 @@ function animate() {
       edgeCam.lookAt(avatar.position);
       edgeCam1.lookAt(avatar.position);
       scene.simulate();
+      // enter lose scene
+      if(gameState.health<0){
+        gameState.scene="lose";
+      }
+      if(gameState.score>100){
+        gameState.scene="youwon";
+      }
+      // enter youwon scene
       if (gameState.camera!= 'none'){
         renderer.render( scene, gameState.camera );
       }

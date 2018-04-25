@@ -19,18 +19,15 @@ function keypress(event){
 }
 
 function keydown(event){
-  // console.log("Keydown: '"+event.key+"'");
-  //console.dir(event);
-  // first we handle the "play again" key in the "youwon" scene
   if ((gameState.scene == 'youwon'||gameState.scene == 'lose')&& event.key=='r') {
     console.log("init");
     reset();
-    gameState.scene = 'start';
+    gameState.scene = 'main';
     gameState.score = 0;
     addBalls();
     return;
   }
-  if(event.key=='p'){
+  if(gameState.scene == 'start' && event.key=='p'){
     gameState.scene = 'main';
     gameState.score = 0;
     gameState.health = 10;

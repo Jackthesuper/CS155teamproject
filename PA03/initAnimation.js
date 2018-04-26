@@ -182,7 +182,7 @@ function animate() {
       edgeCam1.lookAt(avatar.position);
       scene.simulate();
       // enter lose scene
-      if(gameState.health<0){
+      if(gameState.health<1){//change to 1
         gameState.scene="lose";
       }
       if(gameState.score>100){
@@ -197,7 +197,7 @@ function animate() {
     default:
       console.log("don't know the scene "+gameState.scene);
   }
-  
+
   // play backgroud music
   switch(gameState.music){
     case "none":

@@ -38,9 +38,9 @@ function initTower(x, y, z, index){
               if(other_object == avatar && other_object.position.y>80){
                 console.log("get down")
                 avatar.__dirtyPosition = true;
-                avatar.position.x = gameState.tpFrom.x
-                avatar.position.y = gameState.tpFrom.y
-                avatar.position.z = gameState.tpFrom.z
+                avatar.position.z = avatarZ;
+                avatar.position.y = avatarY;
+                avatar.position.x = avatarX;
               }
           })
           scene.add(mesh)

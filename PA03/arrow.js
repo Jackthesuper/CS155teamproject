@@ -24,7 +24,7 @@ function initArrow(x,y,z){
           // console.log(contact_normal.y<-0.5)
             if(other_object == avatar){
               //tpFrom = avatar.
-              avatar.position.set(-150, 180, -250)
+              avatar.position.set(-45, 180, -250)
               avatar.__dirtyPosition = true;
             }
         });

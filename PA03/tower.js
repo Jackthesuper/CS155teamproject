@@ -3,11 +3,11 @@ function initTower(x, y, z, index){
   var loader = new THREE.OBJLoader();
   loader.load("models/arrow.obj",
         function ( obj ) {
-          geometry = new THREE.CylinderGeometry(0.6,1,60, 32)
+          geometry = new THREE.CylinderGeometry(0.6,1,100, 32)
           mesh  = new Physijs.CylinderMesh(geometry, new THREE.MeshLambertMaterial({color: 0xefedba}), 0)
           plane = new Physijs.BoxMesh(new THREE.BoxGeometry(16, 16, 1), new THREE.MeshLambertMaterial({color: 0xefedba}), 0)
           plane.rotateX(Math.PI/2)
-          plane.translateZ(-30.5)
+          plane.translateZ(-50.5)
           mesh.add(plane)
           obj.scale.x = 2
           obj.scale.y = 2
@@ -24,7 +24,7 @@ function initTower(x, y, z, index){
           arrow.add(obj);
           console.log(arrow)
           // arrow.translateZ(5)
-          arrow.translateY(33)
+          arrow.translateY(53)
           mesh.addEventListener('collision', function(other_object, relative_velocity, relative_rotation, contact_normal){
             // console.log(contact_normal.y<-0.5)
               if(other_object == avatar && controls.tpFrom){
@@ -52,5 +52,5 @@ function updateAllTowers(){
 }
 
 function addAllTowers(){
-  initTower(-150, 30, -150, 0)
+  initTower(-45, 50, -250, 0)
 }

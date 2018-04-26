@@ -105,8 +105,8 @@ function createMainScene(){
 
     var listener = new THREE.AudioListener();
     camera.add(listener);
-    var sound = new THREE.Audio(listener);
-    var audioLoader = new THREE.AudioLoader();
+   sound = new THREE.Audio(listener);
+   audioLoader = new THREE.AudioLoader();
     audioLoader.load('/sounds/background.mp3',function(buffer){
       console.log("test")
       sound.setBuffer(buffer);
@@ -171,6 +171,7 @@ function animate() {
       break;
 
     case "main":
+      //renderer.render(scene)
       updateAvatar();
       updateNPC();
       updateAllTowers();

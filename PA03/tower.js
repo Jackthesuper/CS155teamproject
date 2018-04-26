@@ -3,7 +3,7 @@ function initTower(x, y, z, index){
   var loader = new THREE.OBJLoader();
   loader.load("models/arrow.obj",
         function ( obj ) {
-          geometry = new THREE.CylinderGeometry(0.6,1,80, 32)
+          geometry = new THREE.CylinderGeometry(0.6,1,60, 32)
           mesh  = new Physijs.CylinderMesh(geometry, new THREE.MeshLambertMaterial({color: 0xefedba}), 0)
           plane = new Physijs.BoxMesh(new THREE.BoxGeometry(16, 16, 1), new THREE.MeshLambertMaterial({color: 0xefedba}), 0)
           plane.rotateX(Math.PI/2)
@@ -52,5 +52,5 @@ function updateAllTowers(){
 }
 
 function addAllTowers(){
-  initTower(-150, 30, -250, 0)
+  initTower(-150, 30, -150, 0)
 }

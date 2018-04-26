@@ -49,7 +49,7 @@ function coinRoom(){
 }
 
   function createStick(color){
-    var geometry = new THREE.CylinderGeometry(2,2,120);
+    var geometry = new THREE.CylinderGeometry(2,2,210);
     var material = new THREE.MeshLambertMaterial({color:color});
     var mesh = new Physijs.CylinderMesh(geometry, material);
     mesh.rotateZ(Math.PI/2);

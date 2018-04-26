@@ -33,3 +33,6 @@ var mouth = [];
 var avatarX = 10;
 var avatarY = 15;
 var avatarZ = -10;
+
+var sound;
+var audioLoader;

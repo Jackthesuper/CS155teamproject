@@ -22,8 +22,11 @@ function keydown(event){
   if ((gameState.scene == 'youwon'||gameState.scene == 'lose')&& event.key=='r') {
     console.log("init");
     reset();
-    gameState.scene = 'main';
+    gameState.scene = 'start';
     gameState.score = 0;
+    gameState.health = 10;
+    avatar.position.set(avatarX,avatarY,avatarZ);
+    avatar.__dirtyPosition = true;
     addBalls();
     return;
   }
@@ -45,6 +48,7 @@ function keydown(event){
     case "r": controls.up = true; break;
     case "f": controls.down = true; break;
     case "m": controls.speed = 60; break;
+    case ",": controls.speed = 120; break;
     case "h": controls.reset = true; break;
     case "u": controls.rotateFwd = true; break;
     case "j": controls.rotateBwd = true; break;
@@ -102,6 +106,7 @@ function keyup(event){
     case "r": controls.up    = false; break;
     case "f": controls.down  = false; break;
     case "m": controls.speed = 30; break;
+    case ",": controls.speed= 30; break;
     case " ":
       soundEffect('bounce.wav');
       controls.fly = false;

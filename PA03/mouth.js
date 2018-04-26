@@ -37,6 +37,7 @@ function createbullet(physics=true){
   pmesh = new Physijs.SphereMesh(geometry, pmaterial, 0.5)
   pmesh.addEventListener('collision', function(other_object, relative_velocity, relative_rotation, contact_normal){
       if(other_object == avatar){
+        soundEffect('laser.wav');
         gameState.health--;
       }
     }

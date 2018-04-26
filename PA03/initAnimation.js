@@ -340,8 +340,9 @@ function updateAvatar(){
   }
 
   if (controls.reset){
-    avatar.__dirtyPosition = true;
+
     avatar.position.set(avatarX,avatarY,avatarZ);
+    avatar.__dirtyPosition = true;
   }
   if(avatar._physijs.touches.length == 0){
     controls.airborne = true;

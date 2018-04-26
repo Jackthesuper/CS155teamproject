@@ -70,7 +70,7 @@ function createLoseScene(){
   light.position.set(0,200,20);
   loseScene.add(light);
   // lose image
-  loseText = createPlane('lose.jpeg',);
+  loseText = createPlane('lose.jpeg');
   loseScene.add(loseText);
 }
 

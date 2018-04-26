@@ -74,8 +74,8 @@ function addBranch(pmaterial, rotation){
 }
 function addAllfans(){
   //add a crazy fans
-  initFans(260,15,-260,"Fans.mtl", 'Fans.obj',0);
-  initFans(260,15,-280,"Fans.mtl", 'Fans.obj',1);
+  initFans(260,15,-220,"Fans.mtl", 'Fans.obj',0);
+  initFans(260,15,-260,"Fans.mtl", 'Fans.obj',1);
   initFans(260,15,-300,"Fans.mtl", 'Fans.obj',2);
   //initFans(260,15,-320,"Fans.mtl", 'Fans.obj',3);
   //initFans(260,15,-340,"Fans.mtl", 'Fans.obj',4);

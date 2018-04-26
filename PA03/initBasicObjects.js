@@ -199,8 +199,9 @@ function destination(){
           avatar1.castShadow = true;
           avatar1.translateY(20);
 
-          //avatar1.rotateY(Math.PI);
+          avatar1.rotateY(Math.PI);
           avatar1.rotateX(Math.PI);
+          avatar1.rotateZ(Math.PI);
           //avatar.rotateY=Math.PI/2;
           scene.add(avatar1);
           avatar1.setDamping(0.01, 0.01);

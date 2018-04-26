@@ -19,20 +19,22 @@ function initTower(x, y, z, index){
           material.visible = false;
           // material.opacity = 0.5;
           // material.transparent = true;
-          arrow = new Physijs.BoxMesh(new THREE.BoxGeometry(1.5,3,0.5), material, 0);
+          var arrow_down = new Physijs.BoxMesh(new THREE.BoxGeometry(1.5,3,0.5), material, 0);
           obj.translateY(-1.5)
-          arrow.add(obj);
-          console.log(arrow)
+          arrow_down.add(obj);
+          console.log(arrow_down)
           // arrow.translateZ(5)
-          arrow.translateY(53)
-          mesh.addEventListener('collision', function(other_object, relative_velocity, relative_rotation, contact_normal){
-            // console.log(contact_normal.y<-0.5)
-              if(other_object == avatar && controls.tpFrom){
-                avatar.position.set(tpFrom)
-                avatar.__dirtyPosition = true;
-              }
-          });
-          mesh.add(arrow)
+          arrow_down.translateY(53)
+          arrow_down.addEventListener('collision', function(other_object, relative_velocity, relative_rotation, contact_normal){
+            if(other_object == avatar){
+              console.log("get down")
+              avatar.__dirtyPosition = true;
+              avatar.position.x = gameState.tpFrom.x
+              avatar.position.y = gameState.tpFrom.y
+              avatar.position.z = gameState.tpFrom.z
+            }
+          })
+          mesh.add(arrow_down)
           mesh.position.x = x
           mesh.position.y = y
           mesh.position.z = z

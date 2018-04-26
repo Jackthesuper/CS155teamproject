@@ -34,5 +34,8 @@ var avatarX = 10;
 var avatarY = 15;
 var avatarZ = -10;
 
-// var sound;
-// var audioLoader;
+var bullet = []
+var bullet_index = 0;
+var sound;
+var audioLoader;
+var tricker = false;

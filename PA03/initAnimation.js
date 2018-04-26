@@ -105,9 +105,9 @@ function createMainScene(){
 
     var listener = new THREE.AudioListener();
     camera.add(listener);
-   sound = new THREE.Audio(listener);
-   audioLoader = new THREE.AudioLoader();
-    audioLoader.load('/sounds/background.mp3',function(buffer){
+   var sound = new THREE.Audio(listener);
+   var audioLoader = new THREE.AudioLoader();
+   audioLoader.load('/sounds/background.mp3',function(buffer){
       console.log("test")
       sound.setBuffer(buffer);
       sound.setLoop(true);
@@ -200,17 +200,17 @@ function animate() {
   }
 
   // play backgroud music
-  switch(gameState.music){
-    case "none":
-      break;
-    case "loop":
-      soundEffect("loop.mp3");
-      break;
-    case "good":
-      soundEffect("good.wav");
-      break;
-
-  }
+  // switch(gameState.music){
+  //   case "none":
+  //     break;
+  //   case "loop":
+  //     soundEffect("loop.mp3");
+  //     break;
+  //   case "good":
+  //     soundEffect("good.wav");
+  //     break;
+  //
+  // }
   //draw heads up display ..
   // console.dir(document.getElementById("info"))
   document.getElementById("info").innerHTML='<div style="font-size:24pt">Score: '
@@ -219,23 +219,23 @@ function animate() {
   + '</div>';
 }
 
-function playGameMusic(){
-  // create an AudioListener and add it to the camera
-  var listener = new THREE.AudioListener();
-  camera.add( listener );
-
-  // create a global audio source
-  var sound = new THREE.Audio( listener );
-
-  // load a sound and set it as the Audio object's buffer
-  var audioLoader = new THREE.AudioLoader();
-  audioLoader.load( '/sounds/loop.mp3', function( buffer ) {
-    sound.setBuffer( buffer );
-    sound.setLoop( true );
-    sound.setVolume( 0.05 );
-    sound.play();
-  });
-}
+// function playGameMusic(){
+//   // create an AudioListener and add it to the camera
+//   var listener = new THREE.AudioListener();
+//   camera.add( listener );
+//
+//   // create a global audio source
+//   var sound = new THREE.Audio( listener );
+//
+//   // load a sound and set it as the Audio object's buffer
+//   var audioLoader = new THREE.AudioLoader();
+//   audioLoader.load( '/sounds/loop.mp3', function( buffer ) {
+//     sound.setBuffer( buffer );
+//     sound.setLoop( true );
+//     sound.setVolume( 0.05 );
+//     sound.play();
+//   });
+// }
 
 
 function soundEffect(file){

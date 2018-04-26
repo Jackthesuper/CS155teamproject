@@ -27,7 +27,7 @@ function keydown(event){
     gameState.health = 10;
     avatar.position.set(avatarX,avatarY,avatarZ);
     avatar.__dirtyPosition = true;
-    addBalls();
+    // addBalls();
     return;
   }
   if(gameState.scene == 'start' && event.key=='p'){

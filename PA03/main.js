@@ -15,9 +15,9 @@ The user moves a cube around the board trying to knock balls into a cone
 	function init(){
       initPhysijs();
 			scene = initScene();
+      createMainScene();
+			createStartScene();
 			createEndScene();
 			initRenderer();
-			createMainScene();
 			createLoseScene();
-			createStartScene();
 	}

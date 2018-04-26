@@ -129,7 +129,8 @@ function createMainScene(){
     addAllNPC();
     addAllfans();
     addAllTowers();
-    initArrow(15,3,-10);
+    initArrow(66,3,-119);
+    initArrow(240, 3, -180)
     addAllMouths()
 
     gameState.camera = avatarCam;
@@ -184,6 +185,7 @@ function animate() {
       rotateFans();
       rotateStick();
       updateMouth();
+      updateArrows();
       edgeCam.lookAt(avatar.position);
       edgeCam1.lookAt(avatar.position);
       scene.simulate();

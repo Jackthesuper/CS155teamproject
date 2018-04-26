@@ -19,7 +19,7 @@ var clock;
 var controls =
      {fwd:false, bwd:false, left:false, right:false,
       speed:30, fly:false, jump1: false, jump2: false, airborne: false, reset:false, rotateFwd:false, rotateBwd:false,
-      camera:camera, jumpspeed: 30, tpFrom: null}
+      camera:camera, jumpspeed: 30}
 // var npcState = {launched: false, launchedTime: 0}
 var gameState =
     {score:0, health:10, scene:'start', camera:'none', music:"none"}
@@ -27,13 +27,13 @@ const grid_width = 5;
 const ground_width = 550;
 const wall_height = 100;
 var nextwall;
-var fans = [];
+var fans = []
 var towers = []
 var mouth = [];
 var avatarX = 10;
 var avatarY = 15;
 var avatarZ = -10;
-
+var arrows = []
 var bullet = []
 var bullet_index = 0;
 var sound;

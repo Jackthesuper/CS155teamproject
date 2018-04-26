@@ -24,11 +24,22 @@ function initArrow(x,y,z){
           // console.log(contact_normal.y<-0.5)
             if(other_object == avatar){
               //tpFrom = avatar.
-              avatar.position.set(-45, 180, -250)
+              avatar.position.set(-45, 180, -260)
               avatar.__dirtyPosition = true;
-              gameState.tpFrom = arrow.position
+              avatarX = x+15;
+              avatarY = 5;
+              avatarZ = z;
             }
         });
+        arrow.rotateZ(Math.PI)
+        arrows.push(arrow)
         scene.add(arrow)
       });
+}
+
+function updateArrows(){
+  for(let i = 0; i<arrows.length; i++){
+    arrows[i].rotateY(0.03);
+    arrows[i].__dirtyRotation = true;
+  }
 }

@@ -40,7 +40,7 @@ function createbullet(physics=true){
               pmesh.__dirtyPosition = true;
       if(other_object == avatar){
         soundEffect('laser.wav');
-        // gameState.health--;
+        gameState.health--;
       }
     }
   )

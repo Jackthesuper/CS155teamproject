@@ -64,6 +64,7 @@ function initTower(x, y, z, index){
                 avatar.position.y = avatarY
                 avatar.position.z = avatarZ
               }
+              
           })
           scene.add(arrow_down)
           scene.add(mesh)

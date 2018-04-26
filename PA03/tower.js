@@ -16,16 +16,17 @@ function initTower(x, y, z, index){
             obj.children[i].material.color = new THREE.Color(0x04f761)
           }
           material = new THREE.MeshBasicMaterial({})
-          material.visible = false;
-          // material.opacity = 0.5;
-          // material.transparent = true;
-          arrow = new Physijs.BoxMesh(new THREE.BoxGeometry(1.5,3,0.5), material, 0);
+          // material.visible = false;
+          material.opacity = 0.5;
+          material.transparent = true;
+          arrow = new Physijs.BoxMesh(new THREE.BoxGeometry(3,3,0.5), material, 0);
           obj.translateY(-1.5)
-          arrow.add(obj);
+          obj.position.set(-45,103,-250);
+          //arrow.add(obj);
           console.log(arrow)
           // arrow.translateZ(5)
           arrow.translateY(53)
-          mesh.addEventListener('collision', function(other_object, relative_velocity, relative_rotation, contact_normal){
+          arrow.addEventListener('collision', function(other_object, relative_velocity, relative_rotation, contact_normal){
             // console.log(contact_normal.y<-0.5)
               if(other_object == avatar && controls.tpFrom){
                 avatar.position.set(tpFrom)
@@ -39,6 +40,7 @@ function initTower(x, y, z, index){
           towers[index] = mesh
           mesh.number = index
           scene.add(mesh)
+          scene.add(obj);
         }
   )
 

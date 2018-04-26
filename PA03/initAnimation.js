@@ -96,7 +96,7 @@ function createMainScene(){
 
     // create main camera
     camera = new THREE.PerspectiveCamera( 90, window.innerWidth / window.innerHeight, 0.1, 1000 );
-    camera.position.set(0,80,0);
+    camera.position.set(0,200,0);
     camera.lookAt(0,0,0);
 
     camera1 = new THREE.PerspectiveCamera( 90, window.innerWidth / window.innerHeight, 0.1, 1000 );

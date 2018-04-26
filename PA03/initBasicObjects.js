@@ -97,7 +97,7 @@ function createSkyBox(image,k){
 
 
 function createPlane(image){
-  var geometry = new THREE.BoxGeometry(150,0,80);
+  var geometry = new THREE.BoxGeometry(180,0,90);
   var texture = new THREE.TextureLoader().load( 'images/'+image );
   //texture.wrapS = THREE.RepeatWrapping;
   //texture.wrapT = THREE.RepeatWrapping;

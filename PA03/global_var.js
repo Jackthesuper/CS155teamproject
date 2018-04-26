@@ -31,5 +31,5 @@ var fans = []
 var towers = []
 var mouth = [];
 var avatarX = 10;
-var avatarY = 3;
+var avatarY = 15;
 var avatarZ = -10;

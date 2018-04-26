@@ -197,7 +197,7 @@ function animate() {
     default:
       console.log("don't know the scene "+gameState.scene);
   }
-  
+
   // play backgroud music
   switch(gameState.music){
     case "none":
@@ -340,8 +340,9 @@ function updateAvatar(){
   }
 
   if (controls.reset){
-    avatar.__dirtyPosition = true;
+
     avatar.position.set(avatarX,avatarY,avatarZ);
+    avatar.__dirtyPosition = true;
   }
   if(avatar._physijs.touches.length == 0){
     controls.airborne = true;

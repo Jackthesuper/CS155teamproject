@@ -36,4 +36,4 @@ var avatarZ = -10;
 
 var sound;
 var audioLoader;
-var tricker;
+var tricker = false;

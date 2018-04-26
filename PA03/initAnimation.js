@@ -146,6 +146,8 @@ function createMainScene(){
     coinRoom();
     initCoinOBJ(20,5,-120);
     initCoinOBJ(-20,5,-120);
+
+
 }
 
 
@@ -186,12 +188,16 @@ function animate() {
       if(gameState.health<1){//change to 1
         gameState.scene="lose";
       }
-      if(gameState.score>1){
-        for(var l=0;l<3;l++){
-          fans[l].__dirtyPosition = true;
-          fans[l].translateZ(20);
-        }
-      }
+      //This method cannot work, change to use tricker object.
+      // if(gameState.score>1 && !tricker){
+      //   for(var l=0;l<3;l++){
+      //
+      //     soundEffect('good1.mp3');
+      //     fans[l].__dirtyPosition = true;
+      //     fans[l].translateX(50);
+      //     tricker = true;
+      //   }
+      // }
       if(gameState.score>100){
         gameState.scene="youwon";
       }

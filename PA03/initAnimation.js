@@ -197,6 +197,19 @@ function animate() {
     default:
       console.log("don't know the scene "+gameState.scene);
   }
+  
+  // play backgroud music
+  switch(gameState.music){
+    case "none":
+      break;
+    case "loop":
+      soundEffect("loop.mp3");
+      break;
+    case "good":
+      soundEffect("good.wav");
+      break;
+
+  }
   //draw heads up display ..
   // console.dir(document.getElementById("info"))
   document.getElementById("info").innerHTML='<div style="font-size:24pt">Score: '
@@ -223,18 +236,6 @@ function playGameMusic(){
   });
 }
 
-// play backgroud music
-switch(gameState.music){
-  case "none":
-    break;
-  case "loop":
-    soundEffect("loop.mp3");
-    break;
-  case "good":
-    soundEffect("good.wav");
-    break;
-
-}
 
 function soundEffect(file){
   // create an AudioListener and add it to the camera

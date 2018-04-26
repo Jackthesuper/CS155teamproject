@@ -35,10 +35,12 @@ function createbullet(physics=true){
   }
   pmaterial = new Physijs.createMaterial(mesh.material, 0.5, 1.6)
   pmesh = new Physijs.SphereMesh(geometry, pmaterial, 0.5)
+          //pmesh.__dirtyPosition = true;
   pmesh.addEventListener('collision', function(other_object, relative_velocity, relative_rotation, contact_normal){
+              pmesh.__dirtyPosition = true;
       if(other_object == avatar){
         soundEffect('laser.wav');
-        gameState.health--;
+        // gameState.health--;
       }
     }
   )
@@ -59,17 +61,17 @@ function updateMouth(){
       mouth[i].launched = true;
       mouth[i].launchedTime = time;
       console.log("launching")
-      bullet = createbullet(physics=true)
+        console.log(bullet)
+      if(bullet[bullet_index] != null){
+        scene.remove(bullet[bullet_index])
+      }
+      bullet[bullet_index] = createbullet(physics=true)
       bullet.__dirtyPosition = true;
-      bullet.position.set(mouth[i].position.x, mouth[i].position.y, mouth[i].position.z)
-      // console.log(mouth[i].getWorldDirection().multiplyScalar(20).add(new THREE.Vector3(0,5,0)))
-      scene.add(bullet)
-      // bullet.translateZ(-4)
-      // distance = new THREE.Vector3(0,0,0);
-      // distance.subVectors(avatar.position, mouth[i].position)
-      bullet.setLinearVelocity(mouth[i].getWorldDirection().multiplyScalar(100).add(new THREE.Vector3(0,8,0)))
+      bullet[bullet_index].position.set(mouth[i].position.x, mouth[i].position.y, mouth[i].position.z)
+      scene.add(bullet[bullet_index])
+      bullet[bullet_index].setLinearVelocity(mouth[i].getWorldDirection().multiplyScalar(100).add(new THREE.Vector3(0,8,0)))
       // console.log(bullet)
-
+      bullet_index = (bullet_index+1)%5;
 
     }
   }

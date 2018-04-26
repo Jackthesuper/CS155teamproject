@@ -70,7 +70,7 @@ function createLoseScene(){
   light.position.set(0,200,20);
   loseScene.add(light);
   // lose image
-  loseText = createPlane('lose.jpeg',);
+  loseText = createPlane('lose.jpeg');
   loseScene.add(loseText);
 }
 
@@ -125,6 +125,7 @@ function createMainScene(){
     avatarCam = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 0.1, 1000 );
     //avatar = createAvatar();
     createAvatar();
+    destination();
     addAllNPC();
     addAllfans();
     addAllTowers();

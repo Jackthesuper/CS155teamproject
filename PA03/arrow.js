@@ -26,6 +26,7 @@ function initArrow(x,y,z){
               //tpFrom = avatar.
               avatar.position.set(-45, 180, -250)
               avatar.__dirtyPosition = true;
+              gameState.tpFrom = arrow.position
             }
         });
         scene.add(arrow)

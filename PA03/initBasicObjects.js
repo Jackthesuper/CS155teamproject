@@ -112,7 +112,7 @@ function createPlane(image){
 
 
 function createAvatar(){
-  var loader = new THREE.JSONLoader();
+  //var loader = new THREE.JSONLoader();
   //var loader1 = new THREE.OBJLoader();
   var mtlLoader = new THREE.MTLLoader();
   mtlLoader.setBaseUrl( 'models/' );
@@ -172,7 +172,58 @@ function createAvatar(){
   });
 
 }
+function destination(){
+  var mtlLoader = new THREE.MTLLoader();
+  mtlLoader.setBaseUrl( 'models/' );
+  mtlLoader.setPath( 'models/' );
+  mtlLoader.load( "Minion.mtl", function( materials ) {
 
+      materials.preload();
+      var objLoader = new THREE.OBJLoader();
+      objLoader.setMaterials( materials );
+      objLoader.setPath( 'models/' );
+      objLoader.load("Minion.obj", function ( object ){
+          object.translateX(1.5)
+          object.translateZ(3.8)
+          material = new THREE.MeshBasicMaterial({})
+          material.visible = false;
+          pmaterial = new Physijs.createMaterial(material, 0.0, 0.01)
+          pmaterial.opacity = (0.5)
+          pmaterial.transparent = true;
+          avatar1 = new Physijs.BoxMesh(new THREE.BoxGeometry(3,6,3), pmaterial ,10);
+          avatar1.add(object)
+          //mesh.mass = 10;
+          avatar1.position.z = -330;
+          avatar1.position.y = 15;
+          avatar1.position.x = 260;
+          avatar1.castShadow = true;
+          avatar1.translateY(20);
+
+          avatar1.rotateY(Math.PI);
+          avatar1.rotateX(Math.PI);
+          avatar1.rotateZ(Math.PI);
+          //avatar.rotateY=Math.PI/2;
+          scene.add(avatar1);
+          avatar1.setDamping(0.01, 0.01);
+          avatar1.mass = 10000;
+          avatar1.addEventListener('collision', function(other_object, relative_velocity, relative_rotation, contact_normal){
+            // console.log(contact_normal.y<-0.5)
+              if(other_object == avatar){
+                  gameState.scene = 'youwon'
+              }
+          });
+          return avatar1;
+
+      }),
+    function(xhr){
+      console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
+    },
+
+    function(err){
+      console.log("error in loading: "+err)
+    }
+  });
+}
 
 
 function createConeMesh(r,h){

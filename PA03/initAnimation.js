@@ -147,6 +147,8 @@ function createMainScene(){
     initCoinOBJ(20,5,-120);
     initCoinOBJ(-20,5,-120);
 
+    //add obstacle tricker
+    createTricker();
 
 }
 

@@ -25,6 +25,8 @@ function keydown(event){
     gameState.scene = 'start';
     gameState.score = 0;
     gameState.health = 10;
+    avatar.position.set(avatarX,avatarY,avatarZ);
+    avatar.__dirtyPosition = true;
     addBalls();
     return;
   }

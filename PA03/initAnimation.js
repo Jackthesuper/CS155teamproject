@@ -186,6 +186,12 @@ function animate() {
       if(gameState.health<1){//change to 1
         gameState.scene="lose";
       }
+      // if(gameState.score>1){
+      //   for(var l=0;l<5;l++){
+      //     fans[l].__dirtyPosition = true;
+      //     fans[l].translateY(20);
+      //   }
+      // }
       if(gameState.score>100){
         gameState.scene="youwon";
       }

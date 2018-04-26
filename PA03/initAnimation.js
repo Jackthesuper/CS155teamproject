@@ -186,6 +186,7 @@ function animate() {
       rotateStick();
       updateMouth();
       updateArrows();
+      //coinRoom();
       edgeCam.lookAt(avatar.position);
       edgeCam1.lookAt(avatar.position);
       scene.simulate();

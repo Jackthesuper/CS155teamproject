@@ -28,6 +28,8 @@ function keydown(event){
     avatar.position.set(avatarX,avatarY,avatarZ);
     avatar.__dirtyPosition = true;
     // addBalls();
+    coinRoom();
+    tricker = false;
     return;
   }
   if(gameState.scene == 'start' && event.key=='p'){

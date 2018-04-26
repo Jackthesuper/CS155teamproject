@@ -5,7 +5,7 @@ function createTricker(){
   mesh.position.set(270,5,-200);
   mesh.addEventListener('collision',
       function (other_object){
-        if(other_object ==avatar && gameState.score>20 &&tricker==false){
+        if(other_object ==avatar && gameState.score>10 &&tricker==false){
                   for(var o=0;o<3;o++){
                     soundEffect('good1.mp3');
                     fans[o].__dirtyPosition = true;

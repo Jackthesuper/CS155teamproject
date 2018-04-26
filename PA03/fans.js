@@ -77,24 +77,24 @@ function addAllfans(){
   initFans(260,15,-260,"Fans.mtl", 'Fans.obj',0);
   initFans(260,15,-280,"Fans.mtl", 'Fans.obj',1);
   initFans(260,15,-300,"Fans.mtl", 'Fans.obj',2);
-  initFans(260,15,-320,"Fans.mtl", 'Fans.obj',3);
-  initFans(260,15,-340,"Fans.mtl", 'Fans.obj',4);
+  //initFans(260,15,-320,"Fans.mtl", 'Fans.obj',3);
+  //initFans(260,15,-340,"Fans.mtl", 'Fans.obj',4);
 
 
   //normal fans
-  initFans(20,15,-200,"Fans.mtl", 'Fans.obj',5);
-  initFans(64, 15, -17, "Fans.mtl", "Fans.obj", 6,false)
-  initFans(93, 15, -12, "Fans.mtl", "Fans.obj", 7, false)
-  initFans(107, 15, -18, "Fans.mtl", "Fans.obj", 8, false)
-  initFans(180, 15, -97, "Fans.mtl", "Fans.obj", 9, false)
+  initFans(20,15,-200,"Fans.mtl", 'Fans.obj',3);
+  initFans(64, 15, -17, "Fans.mtl", "Fans.obj", 4,false)
+  initFans(93, 15, -12, "Fans.mtl", "Fans.obj", 5, false)
+  initFans(107, 15, -18, "Fans.mtl", "Fans.obj", 6, false)
+  initFans(180, 15, -97, "Fans.mtl", "Fans.obj", 7, false)
 }
 
 function rotateFans(){
-  for(var l=0;l<5;l++){
+  for(var l=0;l<3;l++){
     fans[l].__dirtyRotation = true;
-    fans[l].rotateZ(1);
+    fans[l].rotateZ(0.5);
   }
-  for(var i=5;i<fans.length;i++){
+  for(var i=3;i<fans.length;i++){
     fans[i].__dirtyRotation = true;
     fans[i].rotateZ(0.04)
   }

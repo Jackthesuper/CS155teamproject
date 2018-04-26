@@ -27,7 +27,7 @@ const grid_width = 5;
 const ground_width = 550;
 const wall_height = 100;
 var nextwall;
-var fans = []
+var fans = [];
 var towers = []
 var mouth = [];
 var avatarX = 10;

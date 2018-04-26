@@ -91,6 +91,7 @@ function addAllfans(){
 
 function rotateFans(){
   for(var l=0;l<3;l++){
+    fans[l].__dirtyPosition =true;
     fans[l].__dirtyRotation = true;
     fans[l].rotateZ(0.5);
   }

@@ -27,6 +27,7 @@ function initTower(x, y, z, index){
           arrow_down.translateY(53)
           // arrow_down.addEventListener('collision', function(other_object, relative_velocity, relative_rotation, contact_normal){
           // })
+          mesh.add(arrow_down)
           mesh.position.x = x
           mesh.position.y = y
           mesh.position.z = z

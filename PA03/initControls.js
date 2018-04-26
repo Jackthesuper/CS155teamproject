@@ -34,6 +34,7 @@ function keydown(event){
     gameState.scene = 'main';
     gameState.score = 0;
     gameState.health = 10;
+    tricker = false;
   }
 
   // this is the regular scene

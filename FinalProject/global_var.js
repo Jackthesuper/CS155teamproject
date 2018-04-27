@@ -39,3 +39,6 @@ var bullet_index = 0;
 var sound;
 var audioLoader;
 var tricker = false;
+var originX = 10;
+var originY = 15;
+var originZ = -10;

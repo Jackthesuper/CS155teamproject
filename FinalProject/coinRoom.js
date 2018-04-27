@@ -63,3 +63,7 @@ function coinRoom(){
       roomStick.__dirtyRotation = true;
 
   }
+
+  function deleteStick(){
+    scene.remove(roomStick);
+  }

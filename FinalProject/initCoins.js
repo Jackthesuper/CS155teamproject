@@ -81,7 +81,7 @@
           );
         });
     }
-    
+
   function rotateCoin(){
       for(var i=0;i<coins.length;i++){
         //coins[i].rotateY(0.05);
@@ -89,4 +89,10 @@
           coins[i].children[j].rotateY(0.05);
         }
       }
+  }
+
+  function deleteAllCoins(){
+    for(var i=0;i<coins.length;i++){
+      scene.remove(coins[i]);
+    }
   }

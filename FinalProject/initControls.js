@@ -25,9 +25,11 @@ function keydown(event){
     gameState.scene = 'start';
     gameState.score = 0;
     gameState.health = 10;
-    avatar.position.set(avatarX,avatarY,avatarZ);
+    avatar.position.set(originX,originY,originZ);
     avatar.__dirtyPosition = true;
     // addBalls();
+    deleteAllCoins();
+    deleteStick();
     coinRoom();
     tricker = false;
     return;

@@ -31,6 +31,7 @@ function keydown(event){
     deleteAllCoins();
     deleteStick();
     coinRoom();
+    extraCoins();
     tricker = false;
     return;
   }

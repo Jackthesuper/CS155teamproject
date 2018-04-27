@@ -50,6 +50,17 @@ function coinRoom(){
     initCoinOBJ(13,3,-49);
     initCoinOBJ(20,5,-120);
     initCoinOBJ(-20,5,-120);
+    initCoinOBJ(37,3,-49);
+    initCoinOBJ(259,3,-9);
+    initCoinOBJ(122, 3, -34);
+    initCoinOBJ(257,3,-69);
+    initCoinOBJ(251,3,-130);
+    initCoinOBJ(270,13,-197);
+    initCoinOBJ(27,3,-172);
+    initCoinOBJ(-35,104,-260);
+    initCoinOBJ(-35,104,-240);
+    initCoinOBJ(-55,104,-240);
+    initCoinOBJ(-55,104,-260);
   }
 
   function createStick(color){

@@ -29,8 +29,6 @@ function coinRoom(){
         initCoinOBJ(80+10*n,3,-360);
       }
 
-      initCoinOBJ(177, 3, -100)
-      initCoinOBJ(13,3,-49)
       roomStick = createStick(0X0000ff);
 
       scene.add(roomStick);
@@ -47,6 +45,12 @@ function coinRoom(){
       //roomStick.setAngularVelocity(new THREE.Vector3(0,10,0));
 
 }
+  function extraCoins(){
+    initCoinOBJ(177, 3, -100);
+    initCoinOBJ(13,3,-49);
+    initCoinOBJ(20,5,-120);
+    initCoinOBJ(-20,5,-120);
+  }
 
   function createStick(color){
     var geometry = new THREE.CylinderGeometry(2,2,210);

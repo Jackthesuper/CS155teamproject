@@ -57,6 +57,8 @@ function keydown(event){
     case "h": controls.reset = true; break;
     case "u": controls.rotateFwd = true; break;
     case "j": controls.rotateBwd = true; break;
+    case "t": console.log(Math.round(avatar.position.x)+" "+Math.round(avatar.position.y)
+              +" "+Math.round(avatar.position.z)); break;
 
     // switch cameras
     case "1": gameState.camera = camera; break;

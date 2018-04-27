@@ -146,9 +146,8 @@ function createMainScene(){
     createMaze();
 
     coinRoom();
-    initCoinOBJ(20,5,-120);
-    initCoinOBJ(-20,5,-120);
-
+    extraCoins();
+    
     //add obstacle tricker
     createTricker();
 
@@ -360,7 +359,7 @@ function updateAvatar(){
 
   if (controls.reset){
 
-    avatar.position.set(avatarX,avatarY,avatarZ);
+    avatar.position.set(originX,originY,originZ);
     avatar.__dirtyPosition = true;
   }
   if(avatar._physijs.touches.length == 0){

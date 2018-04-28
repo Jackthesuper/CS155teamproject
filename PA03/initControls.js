@@ -28,7 +28,7 @@ function keydown(event){
     avatar.position.set(avatarX,avatarY,avatarZ);
     avatar.__dirtyPosition = true;
     // addBalls();
-    coinRoom();
+    //coinRoom();
     tricker = false;
     return;
   }
